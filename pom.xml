@@ -49,10 +49,15 @@
 		</dependency>
 		<!-- db -->
 		<dependency>
+		    <groupId>commons-dbcp</groupId>
+		    <artifactId>commons-dbcp</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<!-- <dependency>
            	<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.0.25</version>
-        </dependency>
+        </dependency> -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -89,6 +94,12 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.6.0</version>
 		</dependency>
+		<!-- log4j桥接，用来输出 JAR包中log4j Logging (log4j) -->  
+		<dependency>  
+	        <groupId>org.slf4j</groupId>  
+	        <artifactId>log4j-over-slf4j</artifactId>  
+	        <version>1.6.0</version>  
+	    </dependency> 
 		<!-- json -->
 		<dependency>
 		    <groupId>com.alibaba</groupId>

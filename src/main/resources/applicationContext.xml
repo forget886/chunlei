@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:p="http://www.springframework.org/schema/p"
 		xsi:schemaLocation="http://www.springframework.org/schema/beans 
         					http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         					http://www.springframework.org/schema/context 
         					http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-	<context:component-scan base-package="com.wuxi.service" />
+	<context:component-scan base-package="com.wuxi.service,com.wuxi.dao" />
 	
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
@@ -16,5 +17,18 @@
 		</property>
 	</bean>
 	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		p:driverClassName="${jdbc.driver}"
+		p:url="${jdbc.url}"
+		p:username="${jdbc.user}"
+		p:password="${jdbc.password}"
+		p:testOnBorrow="false"
+		p:testWhileIdle="true"
+		p:timeBetweenEvictionRunsMillis="7200000"
+	/>
 	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+		p:dataSource-ref="dataSource"/>
+	
+	<!-- <import resource="application-datasource.xml"/> -->
 </beans>

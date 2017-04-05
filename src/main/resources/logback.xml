@@ -23,9 +23,7 @@
 			<charset>UTF-8</charset>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>INFO</level>
-			<onMatch>ACCEPT</onMatch>  
-        	<onMismatch>DENY</onMismatch>
+			<level>DEBUG</level>
 		</filter>
 	</appender>
 
@@ -40,7 +38,7 @@
 			<charset>UTF-8</charset>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>INFO</level>
+			<level>DEBUG</level>
 			<onMatch>ACCEPT</onMatch>  
         	<onMismatch>DENY</onMismatch>
 		</filter>
@@ -70,15 +68,15 @@
 	</logger>
 	
 	<logger name="java.sql" additivity="false">
-		<level value="info" />
+		<level value="debug" />
 		<appender-ref ref="SQL_INFO" />
 		<appender-ref ref="SQL_ERROR" />
 		<appender-ref ref="STDOUT" />
 	</logger>
 
-	<logger name="org.springframework" additivity="false">
-		<level value="info" />
-		<appender-ref ref="APP_LOG" />
+	<logger name="org.springframework.jdbc" additivity="false">
+		<level value="trace" />
+		<appender-ref ref="SQL_INFO" />
 		<appender-ref ref="STDOUT" />
 	</logger>
 
