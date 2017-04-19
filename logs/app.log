@@ -1626,3 +1626,12 @@
 2017-04-06 02:17:31 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
 2017-04-06 02:17:31 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
 2017-04-06 02:17:31 [main][com.wuxi.service.OperateService-21] INFO  - []
+2017-04-10 17:09:22 [main][com.wuxi.service.OperateService-21] INFO  - [User [id=0, name=李强, age=48, school=北京大学, borthTime=2016-12-13 00:00:00.0, workDay=2016-12-14, dateCreate=2016-12-12 00:00:00.0]]
+2017-04-10 17:13:20 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@632b6836: startup date [Mon Apr 10 17:13:20 CST 2017]; root of context hierarchy
+2017-04-10 17:13:20 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-04-10 17:13:20 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-04-10 17:13:21 [main][com.wuxi.service.OperateService-21] INFO  - [User [id=0, name=李强, age=48, school=北京大学, borthTime=2016-12-13 00:00:00.0, workDay=2016-12-14, dateCreate=2016-12-12 00:00:00.0]]
+2017-04-10 17:14:30 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@458d1a4: startup date [Mon Apr 10 17:14:30 CST 2017]; root of context hierarchy
+2017-04-10 17:14:30 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-04-10 17:14:30 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-04-10 17:14:31 [main][com.wuxi.service.OperateService-21] INFO  - [User [id=0, name=李强, age=48, school=北京大学, borthTime=2016-12-13 00:00:00.0, workDay=2016-12-14, dateCreate=2016-12-12 00:00:00.0]]

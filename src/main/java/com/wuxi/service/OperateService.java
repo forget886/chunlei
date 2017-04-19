@@ -18,7 +18,7 @@ public class OperateService {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		OperateService operateService = (OperateService) context.getBean("operate");
-		logger.info(operateService.getUserService().getUser("习近平"));
+		logger.info(operateService.getUserService().getUser("李强"));
 	}
 
 	public UserService getUserService() {
