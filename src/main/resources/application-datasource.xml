@@ -56,7 +56,7 @@
 	
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
     
-        <property name="typeAliasesPackage" value="com.wuxi.marketing.vo" />
+        <property name="typeAliasesPackage" value="com.wuxi.bean.vo" />
 		<property name="mapperLocations" >
 			<list>
 				<value>classpath*:mappers/*.xml</value>
@@ -69,8 +69,8 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>	
 	
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.souche.marketing.mapper" />
-    </bean>
+    </bean> -->
 	
 </beans>
