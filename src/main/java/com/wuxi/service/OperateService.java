@@ -7,13 +7,16 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
-@Service("operate")
+
 public class OperateService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(OperateService.class);
 	
-	@Autowired
 	private  UserService userService;
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");

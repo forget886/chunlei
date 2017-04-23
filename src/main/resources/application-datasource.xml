@@ -18,7 +18,7 @@
 		http://www.springframework.org/schema/jdbc
 		http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd">
 		
-	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+	<!-- <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
         <property name="name" value="dataSource_chunlei"/>
         <property name="driverClassName" value="${jdbc.driverClass}"/>
@@ -41,11 +41,22 @@
         <property name="filters" value="stat" />
         <property name="connectionProperties" value="${jdbc.connection.properties}"/>
         <property name="maxWait" value="${jdbc.maxWait}"/>
-    </bean>
+    </bean> -->
     
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
+		p:username="${jdbc.user}"
+		p:password="${jdbc.password}"
+		p:testOnBorrow="false"
+		p:testWhileIdle="true"
+		p:timeBetweenEvictionRunsMillis="7200000">
+		
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"></property>
+	</bean>
+	
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
     
-        <property name="typeAliasesPackage" value="com.souche.marketing.vo" />
+        <property name="typeAliasesPackage" value="com.wuxi.marketing.vo" />
 		<property name="mapperLocations" >
 			<list>
 				<value>classpath*:mappers/*.xml</value>
