@@ -3,7 +3,7 @@
 
 <configuration>
 
-	<properties>
+	<properties >
 	</properties>
 
 	<settings>
@@ -19,12 +19,12 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias alias="User" type="com.wuxi.bean.vo.User" />
 		<typeAlias alias="HashMap" type="java.util.HashMap" />
 		<typeAlias alias="List" type="java.util.List" />
 		<typeAlias alias="String" type="java.lang.String" />
 		<typeAlias alias="BigDecimal" type="java.math.BigDecimal" />
 		<typeAlias alias="Integer" type="java.lang.Integer" />
+		<package name="com.wuxi.bean.vo"/>
 	</typeAliases>
 	
 	

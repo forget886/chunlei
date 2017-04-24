@@ -3,6 +3,7 @@ package com.wuxi.bean.vo;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.apache.ibatis.type.Alias;
 public class User {
 
 	private int id;
