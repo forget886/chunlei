@@ -25,7 +25,7 @@ public class UserDao extends BaseDao{
 //		return userList;
 //	}
 	
-	public List<User> queryByName(String name){
+	public List<User> queryByName(String name){  
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("name", name);
 		return this.sqlSession.selectList("user.getUser", params);
