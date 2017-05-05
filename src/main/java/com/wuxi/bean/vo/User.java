@@ -4,15 +4,13 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import org.apache.ibatis.type.Alias;
-public class User {
+public class User extends BaseVO{
 
 	private int id;
 	private String name;
 	private int age;
 	private String school;
-	private Date borthTime;
-	private Date workDay;
-	private Timestamp dateCreate;
+	
 	
 	public int getId() {
 		return id;
@@ -38,28 +36,10 @@ public class User {
 	public void setSchool(String school) {
 		this.school = school;
 	}
-	public Date getBorthTime() {
-		return borthTime;
-	}
-	public void setBorthTime(Date borthTime) {
-		this.borthTime = borthTime;
-	}
-	public Date getWorkDay() {
-		return workDay;
-	}
-	public void setWorkDay(Date workDay) {
-		this.workDay = workDay;
-	}
-	public Timestamp getDateCreate() {
-		return dateCreate;
-	}
-	public void setDateCreate(Timestamp dateCreate) {
-		this.dateCreate = dateCreate;
-	}
+	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", age=" + age + ", school=" + school + ", borthTime=" + borthTime
-				+ ", workDay=" + workDay + ", dateCreate=" + dateCreate + "]";
+		return "User [id=" + id + ", name=" + name + ", age=" + age + ", school=" + school + ", borthTime=" + borthTime+"]";
 	}
 	
 }

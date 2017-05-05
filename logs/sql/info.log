@@ -1,4 +1,2 @@
-2017-04-25 00:57:54 [main][org.springframework.jdbc.datasource.DataSourceUtils-110] DEBUG - Fetching JDBC Connection from DataSource
-2017-04-25 00:57:54 [main][org.springframework.jdbc.datasource.DataSourceUtils-327] DEBUG - Returning JDBC Connection to DataSource
-2017-04-25 10:00:16 [main][org.springframework.jdbc.datasource.DataSourceUtils-110] DEBUG - Fetching JDBC Connection from DataSource
-2017-04-25 10:00:16 [main][org.springframework.jdbc.datasource.DataSourceUtils-327] DEBUG - Returning JDBC Connection to DataSource
+2017-05-04 23:10:20 [main][org.springframework.jdbc.datasource.DataSourceUtils-110] DEBUG - Fetching JDBC Connection from DataSource
+2017-05-04 23:10:20 [main][org.springframework.jdbc.datasource.DataSourceUtils-327] DEBUG - Returning JDBC Connection to DataSource
