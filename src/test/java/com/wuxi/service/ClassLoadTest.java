@@ -32,7 +32,8 @@ public class ClassLoadTest {
 			setSchool.invoke(user, "外国语");
 			
 			Method setWorkDay = clazz.getSuperclass().getDeclaredMethod("setWorkDay", Date.class);
-			setWorkDay.invoke(user, new Date());
+			setWorkDay.setAccessible(true);
+			setWorkDay.invoke(user, new Date());//赋值不进去？
 			
 			/*
 			 * 1、getMethod是拿到本类所有public方法（包括继承）
