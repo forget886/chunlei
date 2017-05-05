@@ -39,7 +39,7 @@ public class User extends BaseVO{
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", age=" + age + ", school=" + school + ", borthTime=" + borthTime+"]";
+		return "User [id=" + id + ", name=" + name + ", age=" + age + ", school=" + school + ", workDay=" + getWorkDay()+"]";
 	}
 	
 }

@@ -1,5 +1,6 @@
 package com.wuxi.service;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Date;
@@ -33,7 +34,14 @@ public class ClassLoadTest {
 			
 			Method setWorkDay = clazz.getSuperclass().getDeclaredMethod("setWorkDay", Date.class);
 			setWorkDay.setAccessible(true);
-			setWorkDay.invoke(user, new Date());//赋值不进去？
+			setWorkDay.invoke(user, new Date());
+			System.out.println(user);
+			
+			Thread.sleep(1000);
+			
+			Field workDay = clazz.getSuperclass().getDeclaredField("workDay");
+			workDay.setAccessible(true);
+			workDay.set(user, new Date());
 			
 			/*
 			 * 1、getMethod是拿到本类所有public方法（包括继承）
@@ -57,7 +65,11 @@ public class ClassLoadTest {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
-		}
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} 
 		
 		
 	}

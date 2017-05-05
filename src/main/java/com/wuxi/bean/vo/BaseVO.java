@@ -28,4 +28,5 @@ public class BaseVO {
 	public void setDateCreate(Timestamp dateCreate) {
 		this.dateCreate = dateCreate;
 	}
+	
 }
