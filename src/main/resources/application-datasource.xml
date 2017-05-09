@@ -55,7 +55,7 @@
 	</bean>
 	
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
-    	<property name="configLocation" value="classpath:Configuration.xml" />
+    	<property name="configLocation" value="classpath:mybatis-config.xml" />
         <property name="typeAliasesPackage" value="com.wuxi.bean.vo" />
 		<property name="mapperLocations" >
 			<list>
