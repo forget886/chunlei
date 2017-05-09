@@ -16,6 +16,7 @@
 		<setting name="autoMappingBehavior" value="PARTIAL" />
 		<setting name="defaultExecutorType" value="SIMPLE" />
 		<setting name="defaultStatementTimeout" value="25000" />
+		<setting name="logImpl" value="STDOUT_LOGGING" />
 	</settings>
 	
 	<typeAliases>
