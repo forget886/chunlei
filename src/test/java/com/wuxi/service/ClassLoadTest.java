@@ -3,6 +3,7 @@ package com.wuxi.service;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Date;
 
 import org.junit.Test;
@@ -31,7 +32,6 @@ public class ClassLoadTest {
 			
 			Method setSchool = clazz.getMethod("setSchool", String.class);
 			setSchool.invoke(user, "外国语");
-			
 			Method setWorkDay = clazz.getSuperclass().getDeclaredMethod("setWorkDay", Date.class);
 			setWorkDay.setAccessible(true);
 			setWorkDay.invoke(user, new Date());
@@ -40,6 +40,10 @@ public class ClassLoadTest {
 			Thread.sleep(1000);
 			
 			Field workDay = clazz.getSuperclass().getDeclaredField("workDay");
+			System.out.println(workDay.getClass());
+			System.out.println(workDay.getDeclaringClass());
+			System.out.println(workDay.getModifiers());
+			System.out.println(Modifier.isStatic(workDay.getModifiers()));
 			workDay.setAccessible(true);
 			workDay.set(user, new Date());
 			

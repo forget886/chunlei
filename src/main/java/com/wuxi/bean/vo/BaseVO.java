@@ -6,7 +6,7 @@ import java.util.Date;
 public class BaseVO {
 
 	protected Date borthTime;
-	private Date workDay;
+	private static  Date workDay;
 	private Timestamp dateCreate;
 	
 	public Date getBorthTime() {

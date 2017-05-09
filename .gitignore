@@ -20,3 +20,7 @@ target/*
 *.log
 logs/*
 *.log
+
+logs/sql/info.log
+
+logs/sql/info.log
