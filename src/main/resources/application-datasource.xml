@@ -60,7 +60,7 @@
 		<property name="mapperLocations" >
 			<list>
 				<value>classpath*:mappers/*.xml</value>
-				<value>classpath*:mappers/*/*.xml</value>
+				<value>classpath*:mappers/**/*.xml</value>
 			</list>
 		</property>
 		<property name="dataSource" ref="dataSource" />

@@ -3,3 +3,44 @@
 2017-05-04 23:10:19 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
 2017-05-04 23:10:20 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
 2017-05-04 23:10:20 [main][com.wuxi.service.OperateService-24] INFO  - [User [id=2, name=李强, age=48, school=北京大学, borthTime=Tue Dec 13 00:11:00 CST 2016, workDay=Wed Dec 14 00:00:00 CST 2016, dateCreate=2016-12-12 11:00:00.0]]
+2017-05-09 18:08:48 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3f1dc32c: startup date [Tue May 09 18:08:48 CST 2017]; root of context hierarchy
+2017-05-09 18:08:48 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-05-09 18:08:48 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-05-09 18:08:48 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-05-09 18:08:49 [main][com.wuxi.service.OperateService-29] INFO  - [User [id=2, name=李强, age=48, school=北京大学, workDay=Wed Dec 14 00:00:00 CST 2016]]
+2017-05-09 18:14:12 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3af89e13: startup date [Tue May 09 18:14:12 CST 2017]; root of context hierarchy
+2017-05-09 18:14:12 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-05-09 18:14:12 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-05-09 18:14:13 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-05-09 18:14:13 [main][com.wuxi.service.animal.Tiger-12] INFO  - 吃肉
+2017-05-09 18:14:13 [main][com.wuxi.service.OperateService-22] INFO  - [User [id=2, name=李强, age=48, school=北京大学, workDay=Wed Dec 14 00:00:00 CST 2016]]
+2017-05-09 18:21:09 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@18520fa4: startup date [Tue May 09 18:21:09 CST 2017]; root of context hierarchy
+2017-05-09 18:21:09 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-05-09 18:21:10 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-05-09 18:21:10 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-05-09 18:21:10 [main][com.wuxi.service.animal.Tiger-12] INFO  - 吃肉
+2017-05-09 18:21:10 [main][com.wuxi.service.OperateService-22] INFO  - [User [id=2, name=李强, age=48, school=北京大学, workDay=Wed Dec 14 00:00:00 CST 2016]]
+2017-05-09 18:35:57 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3380e475: startup date [Tue May 09 18:35:57 CST 2017]; root of context hierarchy
+2017-05-09 18:35:57 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-05-09 18:35:58 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-05-09 18:35:58 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-05-09 18:35:58 [main][com.wuxi.service.animal.Tiger-12] INFO  - 吃肉
+2017-05-09 18:35:59 [main][com.wuxi.service.OperateService-22] INFO  - [User [id=2, name=李强, age=48, school=北京大学, workDay=Wed Dec 14 00:00:00 CST 2016]]
+2017-05-09 18:47:34 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@18520fa4: startup date [Tue May 09 18:47:34 CST 2017]; root of context hierarchy
+2017-05-09 18:47:34 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-05-09 18:47:35 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-05-09 18:47:35 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-05-09 18:47:36 [main][com.wuxi.service.animal.Tiger-12] INFO  - 吃肉
+2017-05-09 18:47:36 [main][com.wuxi.service.OperateService-22] INFO  - [User [id=2, name=李强, age=48, school=北京大学, workDay=Wed Dec 14 00:00:00 CST 2016]]
+2017-05-09 18:48:20 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3af89e13: startup date [Tue May 09 18:48:20 CST 2017]; root of context hierarchy
+2017-05-09 18:48:20 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-05-09 18:48:20 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-05-09 18:48:20 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-05-09 18:48:21 [main][com.wuxi.service.animal.Tiger-12] INFO  - 吃肉
+2017-05-09 18:48:21 [main][com.wuxi.service.OperateService-22] INFO  - [User [id=2, name=李强, age=48, school=北京大学, workDay=Wed Dec 14 00:00:00 CST 2016]]
+2017-05-09 18:49:43 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5316d7bd: startup date [Tue May 09 18:49:43 CST 2017]; root of context hierarchy
+2017-05-09 18:49:43 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-05-09 18:49:44 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-05-09 18:49:44 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-05-09 18:49:45 [main][com.wuxi.service.animal.Tiger-12] INFO  - 吃肉
+2017-05-09 18:49:45 [main][com.wuxi.service.OperateService-22] INFO  - [User [id=2, name=李强, age=48, school=北京大学, workDay=Wed Dec 14 00:00:00 CST 2016]]

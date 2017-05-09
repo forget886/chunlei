@@ -73,7 +73,7 @@
 		<appender-ref ref="SQL_ERROR" />
 		<appender-ref ref="STDOUT" />
 	</logger>
-
+	
 	<logger name="org.springframework.jdbc" additivity="false">
 		<level value="trace" />
 		<appender-ref ref="SQL_INFO" />

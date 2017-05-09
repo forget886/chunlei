@@ -28,7 +28,6 @@ public class UserService {
 
 	public String getUser(String name){
 		animal.eat();
-		
 		return userDao.queryByName(name).toString();
 	}
 }

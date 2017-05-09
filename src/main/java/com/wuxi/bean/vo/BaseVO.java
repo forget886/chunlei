@@ -18,8 +18,8 @@ public class BaseVO {
 	public Date getWorkDay() {
 		return workDay;
 	}
-	private void setWorkDay(Date workDay) {
-		System.out.println("set");
+	
+	public void setWorkDay(Date workDay) {
 		this.workDay = workDay;
 	}
 	public Timestamp getDateCreate() {
