@@ -33,6 +33,11 @@ public class UserDao extends BaseDao{
 		return this.sqlSession.selectList("user.getUser", params);
 	}
 	
+	/**
+	 * 批量操作
+	 * https://note.youdao.com/web/#/file/8AB63A06A1B345A28B67F05A2E447D30/note/WEB35d7a2fd715a4a7dfe62d2bb00bff214/
+	 * @param userList
+	 */
 	public void batchInsert(List<User> userList){
 		SqlSession session = this.sqlSession.getSqlSessionFactory().openSession(ExecutorType.BATCH, false);
 		try {
