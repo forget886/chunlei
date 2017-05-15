@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.ExecutorType;
 import org.springframework.stereotype.Repository;
 
 @Repository("commonDao")
@@ -19,4 +20,5 @@ public class CommonDao extends BaseDao{
 	 public Map<String, Object> getObj(Map<String, Object> params){
 		 return sqlSession.selectOne("common.select",params);
 	 }
+	 
 }

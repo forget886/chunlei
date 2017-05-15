@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.ExecutorType;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.wuxi.bean.vo.User;
@@ -29,5 +31,22 @@ public class UserDao extends BaseDao{
 		Map<String, Object> params = new HashMap<String,Object>();
 		params.put("name", name);
 		return this.sqlSession.selectList("user.getUser", params);
+	}
+	
+	public void batchInsert(List<User> userList){
+		SqlSession session = this.sqlSession.getSqlSessionFactory().openSession(ExecutorType.BATCH, false);
+		try {
+			for(User u : userList){
+				session.insert("", u);
+			}
+			//数量太大可清除缓存 
+			//session.clearCache();
+			session.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally{
+			session.close();
+		}
+		
 	}
 }
