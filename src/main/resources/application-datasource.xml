@@ -70,8 +70,15 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 	
-	<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.souche.marketing.mapper" />
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wuxi.dao" />
+    </bean>
+    
+    <!--  <bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" lazy-init="true">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+    <bean id="userMapper" parent="baseMapper">
+        <property name="mapperInterface" value="com.wuxi.dao.UserMapper"/>
     </bean> -->
 	
 </beans>

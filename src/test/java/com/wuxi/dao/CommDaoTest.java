@@ -3,7 +3,6 @@ package com.wuxi.dao;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.jar.Attributes.Name;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
