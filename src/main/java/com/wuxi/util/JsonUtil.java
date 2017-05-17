@@ -1,7 +1,14 @@
 package com.wuxi.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 /**
  * 
@@ -26,5 +33,14 @@ public class JsonUtil {
 	 */
 	public static <T> T fromJson(String json,Class<T> clazz){
 		return JSON.parseObject(json, clazz);
+	}
+	
+	public static <T> List<T> toBeanList(String json, Class<T> clazz) throws Exception {
+//		List<T> list = new ArrayList<T>();
+//		JsonArray array = new JsonParser().parse(json).getAsJsonArray();
+//		for(JsonElement e : array){
+//			list.add(new Gson().fromJson(e, clazz));
+//		}
+		return JSON.parseArray(json,clazz);
 	}
 }
