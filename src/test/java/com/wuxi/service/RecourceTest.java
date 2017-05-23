@@ -16,9 +16,8 @@ public class RecourceTest {
 //		
 //		System.out.println(file.isReadable());
 		
-		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		Resource resource = resolver.getResource("classpath:logback.xml");
-		System.out.println(resource.exists());
-		
+//		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+//		Resource resource = resolver.getResource("classpath:logback.xml");
+//		System.out.println(resource.exists());
 	}
 }
