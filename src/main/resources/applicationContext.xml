@@ -22,7 +22,7 @@
 		<!-- <constructor-arg index="" value=""/>
 		<constructor-arg name="" value=""/>
 		<constructor-arg name="" ref=""/> -->
-		<property name="userService" ref="userService"/>
+		<property name="userService" ref="userService" />
 		<!-- <property name="">
 			<list>
 				<value></value>
@@ -50,6 +50,7 @@
 	<bean class="com.wuxi.service.animal.Pig" autowire-candidate="false"/>
 	<bean class="com.wuxi.service.animal.Tiger" primary="true" />
 	
+	<!-- 后处理器一般是全局bean处理，也可按照beanName特殊处理个别bean -->
 	<bean id="timeRecoder" class="com.wuxi.service.TimeRecoder"></bean>
 	
 	<!-- spring的bean定义可以继承.一个子的bean定义可以从一个父bean定义中继承得到所有的属性,并且子bean的定义可以覆盖其通过继承得来的父bean定义的属性. -->
