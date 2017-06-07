@@ -11,8 +11,6 @@ public class CommonTest {
 
 	@Test
 	public void dateTest(){
-		String str = "已给158****6347手机号发送验证码，请注意查收。";
-		System.out.println(str.substring(2,13));
 		
 	}
 	
