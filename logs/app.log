@@ -1,40 +1,44 @@
-2017-06-06 11:11:33 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@590b9bcf: startup date [Tue Jun 06 11:11:33 CST 2017]; root of context hierarchy
-2017-06-06 11:11:33 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-06-06 11:12:59 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@590b9bcf: startup date [Tue Jun 06 11:12:59 CST 2017]; root of context hierarchy
-2017-06-06 11:12:59 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
-2017-06-06 11:13:00 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
-2017-06-06 11:13:00 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-22] INFO  - beansFactory is going to be initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-29] INFO  - beansFactory has been initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-22] INFO  - com.wuxi.service.animal.Tiger#0 is going to be initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-29] INFO  - com.wuxi.service.animal.Tiger#0 has been initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-29] INFO  - com.wuxi.service.animal.Tiger#0 has been initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-22] INFO  - dataSource is going to be initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-29] INFO  - dataSource has been initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:00 [main][com.wuxi.service.TimeRecoder-22] INFO  - sqlSessionFactory is going to be initilized,time now is Tue Jun 06 11:13:00 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - sqlSessionFactory has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - sqlSessionFactory has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - sqlSession is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - sqlSession has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - userDao is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - userDao has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - userMapper is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - userMapper has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - userMapper has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.UserService-55] INFO  - context
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - userService is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.UserService-60] INFO  - init
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - userService has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - commonDao is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - commonDao has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - org.springframework.context.event.internalEventListenerProcessor is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - org.springframework.context.event.internalEventListenerProcessor has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - org.springframework.context.event.internalEventListenerFactory is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - org.springframework.context.event.internalEventListenerFactory has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - operate is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - operate has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.BeansFactory-22] INFO  - new car
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-22] INFO  - getCar is going to be initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][com.wuxi.service.TimeRecoder-29] INFO  - getCar has been initilized,time now is Tue Jun 06 11:13:01 CST 2017
-2017-06-06 11:13:01 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5b198d28: startup date [Tue Jun 06 11:13:01 CST 2017]; parent: org.springframework.context.support.ClassPathXmlApplicationContext@590b9bcf
-2017-06-06 11:13:01 [main][org.springframework.context.support.AbstractApplicationContext-954] INFO  - Closing org.springframework.context.support.ClassPathXmlApplicationContext@5b198d28: startup date [Tue Jun 06 11:13:01 CST 2017]; parent: org.springframework.context.support.ClassPathXmlApplicationContext@590b9bcf
+2017-06-11 19:44:40 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@76653b8e: startup date [Sun Jun 11 19:44:40 CST 2017]; root of context hierarchy
+2017-06-11 19:44:41 [main][com.wuxi.service.BeansFactory-26] INFO  - new car
+2017-06-11 19:44:52 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@614a962e: startup date [Sun Jun 11 19:44:52 CST 2017]; root of context hierarchy
+2017-06-11 19:44:52 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2017-06-11 19:44:53 [main][org.springframework.beans.factory.xml.XmlBeanDefinitionReader-317] INFO  - Loading XML bean definitions from class path resource [application-datasource.xml]
+2017-06-11 19:44:53 [main][org.springframework.core.io.support.PropertiesLoaderSupport-172] INFO  - Loading properties file from file [/Users/dasouche/Documents/project/chunlei/target/classes/jdbc.properties]
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-22] INFO  - beansFactory is going to be initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-29] INFO  - beansFactory has been initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-22] INFO  - com.wuxi.service.animal.Tiger#0 is going to be initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-29] INFO  - com.wuxi.service.animal.Tiger#0 has been initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-29] INFO  - com.wuxi.service.animal.Tiger#0 has been initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-22] INFO  - dataSource is going to be initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-29] INFO  - dataSource has been initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:53 [main][com.wuxi.service.TimeRecoder-22] INFO  - sqlSessionFactory is going to be initilized,time now is Sun Jun 11 19:44:53 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - sqlSessionFactory has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - sqlSessionFactory has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - sqlSession is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - sqlSession has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - userDao is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - userDao has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - userMapper is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - userMapper has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - userMapper has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.UserService-56] INFO  - context
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - userService is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.UserService-61] INFO  - init 2
+2017-06-11 19:44:54 [main][com.wuxi.service.UserService-71] INFO  - init
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - userService has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - commonDao is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - commonDao has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - org.springframework.context.event.internalEventListenerProcessor is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - org.springframework.context.event.internalEventListenerProcessor has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - org.springframework.context.event.internalEventListenerFactory is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - org.springframework.context.event.internalEventListenerFactory has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - operate is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - operate has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.BeansFactory-26] INFO  - new car
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-22] INFO  - getCar is going to be initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][com.wuxi.service.TimeRecoder-29] INFO  - getCar has been initilized,time now is Sun Jun 11 19:44:54 CST 2017
+2017-06-11 19:44:54 [main][org.springframework.context.support.AbstractApplicationContext-574] INFO  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@66dab355: startup date [Sun Jun 11 19:44:54 CST 2017]; parent: org.springframework.context.support.ClassPathXmlApplicationContext@614a962e
+2017-06-11 19:44:54 [main][org.springframework.context.support.AbstractApplicationContext-954] INFO  - Closing org.springframework.context.support.ClassPathXmlApplicationContext@66dab355: startup date [Sun Jun 11 19:44:54 CST 2017]; parent: org.springframework.context.support.ClassPathXmlApplicationContext@614a962e
+2017-06-11 19:44:54 [main][org.springframework.context.support.AbstractApplicationContext-954] INFO  - Closing org.springframework.context.support.ClassPathXmlApplicationContext@614a962e: startup date [Sun Jun 11 19:44:52 CST 2017]; root of context hierarchy
+2017-06-11 19:44:54 [main][com.wuxi.service.UserService-66] INFO  - destory 2
+2017-06-11 19:44:54 [main][com.wuxi.service.UserService-76] INFO  - destroy

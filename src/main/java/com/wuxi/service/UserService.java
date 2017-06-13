@@ -1,7 +1,7 @@
 package com.wuxi.service;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +46,7 @@ public class UserService extends BaseDao implements DisposableBean,InitializingB
 //		return userDao.queryByName(name).toString();
 //	}
 	
+	
 	public String getUser(String name){
 		return userMapper.queryByName(name).toString();
 	}
@@ -53,6 +54,16 @@ public class UserService extends BaseDao implements DisposableBean,InitializingB
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		logger.info("context");
+	}
+	
+	@PostConstruct
+	public void init2(){
+		logger.info("init 2");
+	}
+	
+	@PreDestroy
+	public void destory2(){
+		logger.info("destory 2");
 	}
 
 	@Override

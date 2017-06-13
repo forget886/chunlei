@@ -51,7 +51,7 @@ public class ClassLoadTest {
 			 * 1、getMethod是拿到本类所有public方法（包括继承）
 			 * 2、getDeclaredMethod是拿到所有private protect public方法（不包括继承）
 			 * 3、要想拿到父类的private、protected方法,必须用getSuperclass().getDeclaredMethod
-			 * 4、method的invoke方法只能调用public方法，private、protected方法会报IllegalAccessException,要setAccess(true)
+			 * 4、method的invoke方法只能调用public方法，private、protected方法会报IllegalAccessException,要setAccessible(true)
 			 */
 			System.out.println(user);
 			

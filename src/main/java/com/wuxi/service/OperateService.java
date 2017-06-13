@@ -2,11 +2,8 @@ package com.wuxi.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.wuxi.bean.vo.Car;
 
 
 public class OperateService {
@@ -21,7 +18,7 @@ public class OperateService {
 	}
 
 	public static void main(String[] args) {
-		ApplicationContext father = new ClassPathXmlApplicationContext("applicationContext.xml");
+		AbstractApplicationContext father = new ClassPathXmlApplicationContext("applicationContext.xml");
 		//父子容器 子容器要刷新才能获取bean
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext(father);
 		context.refresh();
@@ -42,9 +39,10 @@ public class OperateService {
 //		for(Resource r:resources){
 //			logger.info(r.getDescription()+"");
 //		}
-		Car car = context.getBean(Car.class);
-		System.out.println(car);
-		context.close();
+//		Car car = context.getBean(Car.class);
+//		System.out.println(car);
+		context.destroy();
+		father.destroy();
 	}
 	
 
