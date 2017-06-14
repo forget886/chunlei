@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.wuxi.property.Factory;
+
 
 public class OperateService {
 	
@@ -22,6 +24,8 @@ public class OperateService {
 		//父子容器 子容器要刷新才能获取bean
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext(father);
 		context.refresh();
+		Factory factory = (Factory) context.getBean("factory");
+		logger.info(factory.getArea().getLocation());
 		//OperateService operateService = (OperateService) context.getBean("operate");
 //		logger.info(operateService.getUserService().getUser("李强"));
 //		ListableBeanFactory factory = context;

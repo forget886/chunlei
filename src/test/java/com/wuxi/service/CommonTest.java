@@ -3,7 +3,8 @@ package com.wuxi.service;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.sql.Time;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -11,7 +12,10 @@ public class CommonTest {
 
 	@Test
 	public void dateTest(){
-		
+		Integer[] array = new Integer[4];
+		List<Integer> list = Arrays.asList(array);
+		array = list.toArray(new Integer[list.size()]);
+		System.out.println(Arrays.toString(array));
 	}
 	
 	@Test
