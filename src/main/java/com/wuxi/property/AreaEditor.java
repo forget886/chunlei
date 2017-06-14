@@ -2,7 +2,7 @@ package com.wuxi.property;
 
 import java.beans.PropertyEditorSupport;
 
-class CustomAreaEditor extends PropertyEditorSupport{
+class AreaEditor extends PropertyEditorSupport{
 
 	/**
 	 * 将字面值转换为属性类型的对象
