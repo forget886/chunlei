@@ -21,6 +21,7 @@
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
+			<!-- ResourceEditor的setAsText方法可以把字面值转换为Resource对象 -->
 				<value>classpath*:*.properties</value>
 			</list>
 		</property>
@@ -63,13 +64,13 @@
 	</bean>
 	
 	<!-- 注册自定义属性编辑器 -->
-	<!-- <bean id="" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+	<bean id="" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
 		<property name="propertyEditorRegistrars">
 			<list>
 				<bean class="com.wuxi.property.CustomPropertyEditorRegistrar"></bean>
 			</list>
 		</property>
-	</bean> -->
+	</bean>
 	
 	<bean id="factory" class="com.wuxi.property.Factory">
 		<property name="name" value="zh"/>
