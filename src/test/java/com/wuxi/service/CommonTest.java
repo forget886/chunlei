@@ -8,15 +8,23 @@ import java.util.List;
 
 import org.junit.Test;
 
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
 public class CommonTest {
 
 	@Test
 	public void dateTest(){
-		Integer[] array = new Integer[4];
-		List<Integer> list = Arrays.asList(array);
-		array = list.toArray(new Integer[list.size()]);
-		System.out.println(Arrays.toString(array));
+		String string = "{\"bizExt\":{\"url\":\"/postsuccess/30301133085133/?source=car\"},\"bizCode\":\"redirect\"}";
+		System.out.println(getThirdId(string));
 	}
+	
+	//{"bizExt":{"url":"/postsuccess/30301133085133/?source=car"},"bizCode":"redirect"}
+		private String getThirdId(String url){
+			int start = url.indexOf("success/");
+			int end = url.indexOf("/?s");
+			return url.substring(start+"success/".length(), end);
+		}
 	
 	@Test
 	public void UrlDecode(){
@@ -27,5 +35,14 @@ public class CommonTest {
 			e.printStackTrace();
 		}
 		System.out.println(url);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Test
+	public void convert(){
+		String str = "{\"name\":\"aa\",\"name\":\"bb\",\"pass\":\"aa\"}";
+		JSONObject object = JSONObject.fromObject(str);
+		JSONArray array = object.getJSONArray("name");
+		System.out.println(array.isArray());
 	}
 }

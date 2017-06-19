@@ -29,7 +29,6 @@ public class UserService extends BaseDao implements DisposableBean,InitializingB
 	private UserMapper userMapper;
 	
 	
-	
 	private Animal animal;
 	
 	public Animal getAnimal() {
