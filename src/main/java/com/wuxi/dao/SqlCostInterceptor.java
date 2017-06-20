@@ -42,7 +42,7 @@ public class SqlCostInterceptor implements Interceptor{
         } finally {
             long endTime = System.currentTimeMillis();
             long sqlCost = endTime - startTime;
-             
+            
             BoundSql boundSql = statementHandler.getBoundSql();
             String sql = boundSql.getSql();
             Object parameterObject = boundSql.getParameterObject();
