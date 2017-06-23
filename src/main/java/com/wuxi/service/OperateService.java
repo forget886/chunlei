@@ -2,8 +2,11 @@ package com.wuxi.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.wuxi.event.MailSend;
 
 
 public class OperateService {
@@ -11,10 +14,16 @@ public class OperateService {
 	private static final Logger logger = LoggerFactory.getLogger(OperateService.class);
 	
 	private  UserService userService;
+	@Autowired
+	private MailSend mailSend;
 	
 	
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+	
+	public OperateService(String name){
+		System.out.println(name);
 	}
 
 	public static void main(String[] args) {
@@ -22,10 +31,12 @@ public class OperateService {
 		//父子容器 子容器要刷新才能获取bean
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext(father);
 		context.refresh();
+		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
 		OperateService operateService = (OperateService) context.getBean("operate");
-		logger.info(operateService.getUserService().getUser("李强"));
+		operateService.getMailSend().sendMail("zz");
+//		logger.info(operateService.getUserService().getUser("李强"));
 //		ListableBeanFactory factory = context;
 //		logger.info("bean count:{}",factory.getBeanDefinitionCount());
 //		for(String name : factory.getBeanDefinitionNames()){
@@ -47,6 +58,9 @@ public class OperateService {
 		father.destroy();
 	}
 	
+	public MailSend getMailSend(){
+		return this.mailSend;
+	}
 
 	public UserService getUserService() {
 		return userService;

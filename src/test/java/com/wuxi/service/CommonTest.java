@@ -3,28 +3,26 @@ package com.wuxi.service;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Scanner;
 
 import org.junit.Test;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class CommonTest {
 
 	@Test
 	public void dateTest(){
-		String string = "{\"bizExt\":{\"url\":\"/postsuccess/30301133085133/?source=car\"},\"bizCode\":\"redirect\"}";
-		System.out.println(getThirdId(string));
+//		String string = "{\"bizExt\":{\"url\":\"/postsuccess/30301133085133/?source=car\"},\"bizCode\":\"redirect\"}";
+//		System.out.println(getThirdId(string));
+		String  str = "\"aa";
+		System.out.println(new StringBuilder("bb").append(str).toString());
 	}
 	
 	//{"bizExt":{"url":"/postsuccess/30301133085133/?source=car"},"bizCode":"redirect"}
-		private String getThirdId(String url){
-			int start = url.indexOf("success/");
-			int end = url.indexOf("/?s");
-			return url.substring(start+"success/".length(), end);
-		}
+	private String getThirdId(String url){
+		int start = url.indexOf("success/");
+		int end = url.indexOf("/?s");
+		return url.substring(start+"success/".length(), end);
+	}
 	
 	@Test
 	public void UrlDecode(){
@@ -40,9 +38,6 @@ public class CommonTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public void convert(){
-		String str = "{\"name\":\"aa\",\"name\":\"bb\",\"pass\":\"aa\"}";
-		JSONObject object = JSONObject.fromObject(str);
-		JSONArray array = object.getJSONArray("name");
-		System.out.println(array.isArray());
+		new Scanner(System.in).nextLine();
 	}
 }
