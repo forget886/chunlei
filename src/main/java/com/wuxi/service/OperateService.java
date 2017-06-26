@@ -1,10 +1,13 @@
 package com.wuxi.service;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.Resource;
 
 import com.wuxi.event.MailSend;
 
@@ -34,8 +37,15 @@ public class OperateService {
 		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-		OperateService operateService = (OperateService) context.getBean("operate");
-		operateService.getMailSend().sendMail("zz");
+//		OperateService operateService = (OperateService) context.getBean("operate");
+//		operateService.getMailSend().sendMail("zz");
+		Resource resource = context.getResource(".");
+		try {
+			logger.info(resource.getURL().toString());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 //		logger.info(operateService.getUserService().getUser("李强"));
 //		ListableBeanFactory factory = context;
 //		logger.info("bean count:{}",factory.getBeanDefinitionCount());

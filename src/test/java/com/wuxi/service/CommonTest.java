@@ -1,8 +1,12 @@
 package com.wuxi.service;
 
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 import org.junit.Test;
@@ -11,11 +15,22 @@ public class CommonTest {
 
 	@Test
 	public void dateTest(){
-//		String string = "{\"bizExt\":{\"url\":\"/postsuccess/30301133085133/?source=car\"},\"bizCode\":\"redirect\"}";
-//		System.out.println(getThirdId(string));
-		String  str = "\"aa";
-		System.out.println(new StringBuilder("bb").append(str).toString());
-	}
+		File f = new File("src");
+		 System.out.println(
+		            " 绝对路径：" + f.getAbsolutePath() +
+		            "\n 可读：" + f.canRead() +
+		            "\n 可写：" + f.canWrite() +
+		            "\n 文件名：" + f.getName() +
+		            "\n 上级目录：" + f.getParent() +
+		            "\n 相对地址：" + f.getPath() +
+		            "\n 长度：" + f.length() +
+		            "\n 最近修改时间：" + f.lastModified()
+		            );
+		        if(f.isFile())
+		            System.out.println(" 是一个文件");
+		        else if(f.isDirectory())
+		            System.out.println(" 是一个目录");
+ 	}
 	
 	//{"bizExt":{"url":"/postsuccess/30301133085133/?source=car"},"bizCode":"redirect"}
 	private String getThirdId(String url){
