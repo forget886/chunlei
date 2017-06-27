@@ -9,6 +9,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
 
+import com.wuxi.bean.vo.Car;
 import com.wuxi.event.MailSend;
 
 
@@ -39,13 +40,16 @@ public class OperateService {
 //		logger.info(factory.getArea().getLocation());
 //		OperateService operateService = (OperateService) context.getBean("operate");
 //		operateService.getMailSend().sendMail("zz");
-		Resource resource = context.getResource(".");
-		try {
-			logger.info(resource.getURL().toString());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Resource resource = context.getResource(".");
+//		try {
+//			logger.info(resource.getURL().toString());//返回类路径
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		Car car = (Car) context.getBean("car2");
+		logger.info(car.getClass().getName());
+		CarFactoryBean carFactoryBean = (CarFactoryBean) context.getBean("&car2");
+		logger.info(carFactoryBean.getClass().getName());
 //		logger.info(operateService.getUserService().getUser("李强"));
 //		ListableBeanFactory factory = context;
 //		logger.info("bean count:{}",factory.getBeanDefinitionCount());

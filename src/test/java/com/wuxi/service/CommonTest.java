@@ -4,10 +4,6 @@ package com.wuxi.service;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
 
 import org.junit.Test;
 
@@ -50,9 +46,8 @@ public class CommonTest {
 		System.out.println(url);
 	}
 	
-	@SuppressWarnings("unchecked")
 	@Test
 	public void convert(){
-		new Scanner(System.in).nextLine();
+		int i = 0;
 	}
 }

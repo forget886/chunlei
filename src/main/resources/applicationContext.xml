@@ -27,6 +27,10 @@
 		</property>
 	</bean>
 	
+	<bean id="car2" class="com.wuxi.service.CarFactoryBean">
+		<property name="brand" value="奥迪"/>
+	</bean>
+	
 	<bean name="operate" class="com.wuxi.service.OperateService" >
 	    <!-- depends-on="bean" 前置依赖bean,前置依赖的bean会在本bean实例化之前创建好 -->
  		<!-- <constructor-arg index="" value=""/>

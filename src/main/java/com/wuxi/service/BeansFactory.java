@@ -23,7 +23,7 @@ public class BeansFactory {
     
 	@Bean
 	public Car getCar(){
-		logger.info("new car");
+		logger.info("使用java config方式创建car实例");
 		Car car = new Car();
 		car.setBrand("奔驰");
 		car.setMaxSpeed(100);

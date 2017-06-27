@@ -2,12 +2,12 @@ package com.wuxi.aop;
 
 import java.lang.reflect.Proxy;
 
-public class PerformSevice {
+public class DynamicProxySevice {
 
 	public static void main(String[] args) {
 		System.out.println("jdk 代理...");
 		jdkProxy();
-		System.out.println("cglib 代理...");
+		System.out.println("\n\ncglib 代理...");
 		cglibProxy();
 	}
 	
