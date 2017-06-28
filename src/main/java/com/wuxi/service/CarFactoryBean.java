@@ -12,6 +12,10 @@ public class CarFactoryBean implements FactoryBean<Car>{
 	
 	private String brand;
 	
+	public CarFactoryBean(){
+		logger.info("实例化 carfactorybean...");
+	}
+	
 	@Override
 	public Car getObject() throws Exception {
 		logger.info("使用factorybean的方式创建car实例");
