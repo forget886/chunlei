@@ -72,6 +72,8 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.wuxi.dao" />
+        <!-- 配置多数据源的时候，会有多个sqlSessionFactory，需要通过该属性来指定哪一个sqlSessionFactory -->
+        <!-- <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/> -->
     </bean>
     
     <!--  <bean id="baseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" abstract="true" lazy-init="true">

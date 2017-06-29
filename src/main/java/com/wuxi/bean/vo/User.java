@@ -1,5 +1,4 @@
 package com.wuxi.bean.vo;
-
 public class User extends BaseVO{
 
 	private int id;
