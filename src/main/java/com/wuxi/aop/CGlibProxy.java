@@ -2,9 +2,11 @@ package com.wuxi.aop;
 
 import java.lang.reflect.Method;
 
-import org.springframework.cglib.proxy.Enhancer;
-import org.springframework.cglib.proxy.MethodInterceptor;
-import org.springframework.cglib.proxy.MethodProxy;
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+
+
 
 public class CGlibProxy implements MethodInterceptor{
 

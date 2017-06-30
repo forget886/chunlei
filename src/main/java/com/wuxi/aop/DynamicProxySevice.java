@@ -5,10 +5,11 @@ import java.lang.reflect.Proxy;
 public class DynamicProxySevice {
 
 	public static void main(String[] args) {
-		System.out.println("jdk 代理...");
+		System.out.println("jdk动态代理...");
 		jdkProxy();
-		System.out.println("\n\ncglib 代理...");
+		System.out.println("\n\ncglib动态代理...");
 		cglibProxy();
+		System.out.println("over...");
 	}
 	
 	public static void jdkProxy(){

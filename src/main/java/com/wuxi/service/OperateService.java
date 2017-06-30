@@ -35,7 +35,7 @@ public class OperateService {
 		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-//		OperateService operateService = (OperateService) context.getBean("operate");
+		OperateService operateService = (OperateService) context.getBean("operate");
 //		operateService.getMailSend().sendMail("zz");
 //		Resource resource = context.getResource(".");
 //		try {
@@ -47,7 +47,7 @@ public class OperateService {
 		logger.info(car.getClass().getName());
 		CarFactoryBean carFactoryBean = (CarFactoryBean) context.getBean("&car2");
 		logger.info(carFactoryBean.getClass().getName());
-//		logger.info(operateService.getUserService().getUser("李强"));
+		logger.info(operateService.getUserService().getUser("李强"));
 //		ListableBeanFactory factory = context;
 //		logger.info("bean count:{}",factory.getBeanDefinitionCount());
 //		for(String name : factory.getBeanDefinitionNames()){

@@ -22,11 +22,22 @@
 			<artifactId>spring-beans</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+		<!-- cglib 源码 但有asm、ant的依赖,spring-core包的cglib只有class文件，没有源码，cglib-nodep也是-->
 		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>3.2.5</version>
+		</dependency>
+		<!-- <dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib-nodep</artifactId>
+		    <version>3.2.5</version>
+		</dependency> -->
+		<!-- <dependency>
 			<groupId>org.springframework</groupId>
 			 <artifactId>spring-aop</artifactId>
 			 <version>${spring.version}</version>
-		</dependency>
+		</dependency> -->
 		<!-- <dependency>
 			<groupId>org.springframework</groupId>
 			 <artifactId>spring-aspects</artifactId>
@@ -36,6 +47,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!-- <dependency>
 			<groupId>org.springframework</groupId>
@@ -52,11 +69,11 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
 		</dependency> -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring.version}</version>
-		</dependency>
+		</dependency> -->
 		<!-- db -->
 		<dependency>
 		    <groupId>commons-dbcp</groupId>
@@ -156,15 +173,15 @@
   <build>
   	<plugins>
   		<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-				<version>3.1</version>
-			</plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>1.7</source>
+				<target>1.7</target>
+				<encoding>UTF-8</encoding>
+			</configuration>
+			<version>3.1</version>
+		</plugin>
   	</plugins>
   </build>
 </project>
