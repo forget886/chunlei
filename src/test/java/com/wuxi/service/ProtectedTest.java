@@ -13,7 +13,7 @@ public class ProtectedTest {
 
 
 class Father{
-	protected void p1(){
+	protected  void p1(){
 		System.out.println(1);
 	}
 }

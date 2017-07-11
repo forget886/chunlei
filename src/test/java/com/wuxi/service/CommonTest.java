@@ -4,6 +4,10 @@ package com.wuxi.service;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -33,6 +37,19 @@ public class CommonTest {
 		int start = url.indexOf("success/");
 		int end = url.indexOf("/?s");
 		return url.substring(start+"success/".length(), end);
+	}
+	
+	@Test
+	public void nulllTest(){
+		Map<String, String> map = new HashMap<>();
+		map.put(null, "1");
+		map.put(null,"2");
+		System.out.println(map.get(null));
+		
+		Set<String> set = new HashSet<>();
+		set.add("1");
+		set.add(null);
+		System.out.println(set);
 	}
 	
 	@Test

@@ -21,5 +21,9 @@ public class PerformanceImpl implements Performance{
 			e.printStackTrace();
 		}
 	}
+	
+	protected void check(int id){
+		System.out.println(true);
+	}
 
 }
