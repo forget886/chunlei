@@ -38,7 +38,7 @@ public class DynamicProxySevice {
 		//设置要创建动态代理的类  
 		enhancer.setSuperclass(PerformanceImpl.class);
 		//设置回调，这里相当于是对于代理类上所有方法的调用，都会调用CallBack，而Callback则需要实行intercept()方法进行拦截  
-		//enhancer.setCallback(proxy);
+		enhancer.setCallback(proxy);
 		//通过字节码技术动态生成子类实例
 		PerformanceImpl performance = (PerformanceImpl) enhancer.create();
 		
