@@ -1,4 +1,4 @@
-package com.wuxi.aop;
+package com.wuxi.objectproxy;
 
 public interface Performance {
 

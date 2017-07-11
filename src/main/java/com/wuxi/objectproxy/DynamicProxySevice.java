@@ -1,4 +1,4 @@
-package com.wuxi.aop;
+package com.wuxi.objectproxy;
 
 import java.lang.reflect.Proxy;
 
