@@ -31,6 +31,18 @@
 		<property name="brand" value="奥迪"/>
 	</bean>
 	
+	<bean id="greetingAdvice" class="com.wuxi.aop.GreetingBeforeAdvice"/>
+	<bean id="waiter" class="com.wuxi.aop.WaiterImpl"/>
+	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interfaces">
+			<list>
+				<value>com.wuxi.aop.Waiter</value>
+			</list>
+		</property>
+		<property name="interceptorNames" value="greetingAdvice"/>
+		<property name="target" ref="waiter"/>
+	</bean>
+	
 	<bean name="operate" class="com.wuxi.service.OperateService" >
 	    <!-- depends-on="bean" 前置依赖bean,前置依赖的bean会在本bean实例化之前创建好 -->
  		<!-- <constructor-arg index="" value=""/>

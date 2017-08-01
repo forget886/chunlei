@@ -9,6 +9,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
 
+import com.wuxi.aop.Waiter;
 import com.wuxi.event.MailSend;
 
 
@@ -34,17 +35,18 @@ public class OperateService {
 		//父子容器 子容器要刷新才能获取bean
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext(father);
 		context.refresh();
-		
+		Waiter waiter = (Waiter) context.getBean("waiterProxy");
+		waiter.greetTo("xixi");
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-		OperateService operateService = (OperateService) context.getBean("operate");
+//		OperateService operateService = (OperateService) context.getBean("operate");
 //		operateService.getMailSend().sendMail("zz");
-		Resource resource = context.getResource(".");
-		try {
-			logger.info(resource.getURL().toString());//返回类路径
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		Resource resource = context.getResource(".");
+//		try {
+//			logger.info(resource.getURL().toString());//返回类路径
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 //		Car car = (Car) context.getBean("car2");
 //		logger.info(car.getClass().getName());
 //		CarFactoryBean carFactoryBean = (CarFactoryBean) context.getBean("&car2");

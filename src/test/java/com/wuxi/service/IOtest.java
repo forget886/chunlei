@@ -1,10 +1,16 @@
 package com.wuxi.service;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.AsynchronousFileChannel;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import org.junit.Test;
 
@@ -32,4 +38,26 @@ public class IOtest {
 		}
 	
 	}
+	
+	@Test
+	public void asyncIO(){
+		Path file = Paths.get("/Users/dasouche/Desktop/sync_58.txt");
+		try {
+			AsynchronousFileChannel channel = AsynchronousFileChannel.open(file,StandardOpenOption.READ);
+			ByteBuffer buffer = ByteBuffer.allocateDirect(1000);
+			Future<Integer> result = channel.read(buffer, 0);
+			//do something
+			while(!result.isDone()){
+				System.out.println("read...");
+			}
+			Thread.sleep(1000);
+			Integer bytesRead = result.get();
+			byte[] data = new byte[bytesRead];
+			buffer.get(data);
+ 			System.out.println("byte read " + bytesRead + ", " + new String(data));
+		} catch (IOException | InterruptedException | ExecutionException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
