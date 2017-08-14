@@ -18,7 +18,7 @@ public class TestBeforeAdvice {
 		pf.setOptimize(true);
 		//可设置多个增强
 		pf.addAdvice(advice);
-	
+		
 		Waiter proxy = (Waiter) pf.getProxy();
 		proxy.greetTo("xixi");
 		proxy.serveTo("wang");

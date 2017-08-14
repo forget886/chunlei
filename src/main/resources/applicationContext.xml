@@ -11,7 +11,7 @@
         					http://www.springframework.org/schema/context/spring-context-4.2.xsd"
         default-autowire="byType" >
 
-	<context:component-scan base-package="com.wuxi.service,com.wuxi.dao,com.wuxi.event" >
+	<context:component-scan base-package="com.wuxi.service,com.wuxi.dao,com.wuxi.event,com.wuxi.aop" >
 		<!-- <context:include-filter type="annotation" expression=""/>
 		<context:exclude-filter type="annotation" expression=""/> -->
 	</context:component-scan>
@@ -39,7 +39,14 @@
 				<value>com.wuxi.aop.Waiter</value>
 			</list>
 		</property>
-		<property name="interceptorNames" value="greetingAdvice"/>
+		<!-- 必须是实现了org.aopalliance.intercept.MethodInterceptor或org.springframework.aop.Advisor-->
+		<property name="interceptorNames" >
+			<list>
+				<value>greetingAdvice</value>
+				<value>greetingInterceptor</value>
+				<value>greetingThrows</value>
+			</list>
+		</property>
 		<property name="target" ref="waiter"/>
 	</bean>
 	
@@ -51,7 +58,7 @@
 	<aop:config proxy-target-class="false">
 		<aop:aspect id="time" ref="timeHandler" order="1"> 
 			<aop:pointcut id="addtime" expression="execution(* com.wuxi.aop.aspect.HelloWorld.*(..))"/>
-			<aop:before method="print" pointcut-ref="addtime"/>
+			<aop:before method="print" pointcut-ref="addtime" />
 			<aop:after method="print" pointcut-ref="addtime"/>
 		</aop:aspect>
 		

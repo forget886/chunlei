@@ -8,8 +8,10 @@ public class WaiterImpl implements Waiter{
 	
 	
 	@Override
-	public void greetTo(String name) {
+	public String greetTo(String name) {
 		System.out.println("greet to " + name);
+		//throw new RuntimeException("boom!!!");
+		return name + "...";
 	}
 
 	@Override
