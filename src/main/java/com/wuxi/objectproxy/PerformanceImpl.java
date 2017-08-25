@@ -1,6 +1,10 @@
 package com.wuxi.objectproxy;
 
 public class PerformanceImpl implements Performance{
+	
+	public  PerformanceImpl() {
+		System.out.println("创建被代理实例");
+	}
 
 	@Override
 	public void add(int id) {

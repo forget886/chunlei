@@ -18,12 +18,14 @@ public class DynamicProxySevice {
 		Performance target = new PerformanceImpl();
 		//将业务代码和横切代码编织到一起
 		PerformHandler handler = new PerformHandler(target);
+		//生成的代理类保存到磁盘
+	    //System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");  
 		//创建代理实例
 		Performance proxy = (Performance) Proxy.newProxyInstance(
 				target.getClass().getClassLoader(), 
 				target.getClass().getInterfaces(), 
 				handler);
-		
+		//生成的代理类保存到磁盘
 		//ProxyUtils.generateClassFile(target.getClass(), "PerformanceProxy");
 		
 		proxy.add(12);

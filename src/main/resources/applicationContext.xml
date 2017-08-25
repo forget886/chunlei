@@ -16,7 +16,8 @@
 		<context:exclude-filter type="annotation" expression=""/> -->
 	</context:component-scan>
 	
-	<!-- <aop:aspectj-autoproxy/> -->
+	<!-- 为匹配切面的bean创建代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
 	
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
 		<property name="locations">
@@ -56,8 +57,8 @@
 	<!-- 高版本的Spring会自动选择是使用动态代理还是CGLIB生成代理内容，当然我们也可以强制使用CGLIB生成代理 -->
 	<!-- proxy-target-class属性，true，基于类的代理,false或者这个属性被省略，基于接口的代理-->
 	<aop:config proxy-target-class="false">
+		<aop:pointcut id="addtime" expression="execution(* com.wuxi.aop.aspect.HelloWorld.*(..))"/>
 		<aop:aspect id="time" ref="timeHandler" order="1"> 
-			<aop:pointcut id="addtime" expression="execution(* com.wuxi.aop.aspect.HelloWorld.*(..))"/>
 			<aop:before method="print" pointcut-ref="addtime" />
 			<aop:after method="print" pointcut-ref="addtime"/>
 		</aop:aspect>

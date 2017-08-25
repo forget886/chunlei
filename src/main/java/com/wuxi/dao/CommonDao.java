@@ -21,4 +21,16 @@ public class CommonDao extends BaseDao{
 		 return sqlSession.selectOne("common.select",params);
 	 }
 	 
+	 public int updateObj(Map<String, Object> params){
+		 return sqlSession.update("common.update",params);
+	 }
+	 
+	 public int deleteObj(Map<String, Object> params){
+		 return sqlSession.delete("common.delete", params);
+	 }
+	 
+	 public int addObj(Map<String, Object> params){
+		 return sqlSession.insert("common.add", params);
+	 }
+	 
 }

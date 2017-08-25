@@ -36,10 +36,12 @@ public class OperateService {
 		//父子容器 子容器要刷新才能获取bean
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext(father);
 		context.refresh();
-		Waiter waiter = (Waiter) context.getBean("waiterProxy");
-		waiter.greetTo("xixi");
-//		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
-//		helloWorld.hello();
+		//是否允许循环依赖
+		((ClassPathXmlApplicationContext)context).setAllowCircularReferences(false);
+//		Waiter waiter = (Waiter) context.getBean("waiterProxy");
+//		waiter.greetTo("xixi");
+		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
+		helloWorld.hello();
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
 //		OperateService operateService = (OperateService) context.getBean("operate");
