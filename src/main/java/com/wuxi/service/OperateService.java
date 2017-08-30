@@ -1,15 +1,11 @@
 package com.wuxi.service;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.Resource;
 
-import com.wuxi.aop.Waiter;
 import com.wuxi.aop.aspect.HelloWorld;
 import com.wuxi.event.MailSend;
 
