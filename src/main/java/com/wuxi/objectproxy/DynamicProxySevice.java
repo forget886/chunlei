@@ -34,6 +34,7 @@ public class DynamicProxySevice {
 	
 	
 	public static void cglibProxy(){
+		//System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "/Users/zhuizhumengxiang/Downloads");
 		CGlibProxy proxy = new CGlibProxy();
 		//cglib 中加强器，用来创建动态代理 
 		Enhancer enhancer = new Enhancer();

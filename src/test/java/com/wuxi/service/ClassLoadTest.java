@@ -11,11 +11,19 @@ import java.util.Iterator;
 import java.util.ServiceLoader;
 
 import org.junit.Test;
+import org.springframework.context.support.AbstractRefreshableConfigApplicationContext;
 
 import com.wuxi.bean.vo.User;
 
 public class ClassLoadTest {
 
+	@Test
+	public void showInterface(){
+		for(Class<?> intf : AbstractRefreshableConfigApplicationContext.class.getInterfaces()){
+			System.out.println(intf.getName());
+		}
+	}
+	
 	@Test
 	public void bootload() {
 		URL[]  urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();

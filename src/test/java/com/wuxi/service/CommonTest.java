@@ -4,21 +4,13 @@ package com.wuxi.service;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
-
-import com.wuxi.util.CoreException;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONException;
-import net.sf.json.JSONObject;
 
 public class CommonTest {
 
@@ -74,8 +66,19 @@ public class CommonTest {
 	
 	@Test
 	public void convert(){
-		List<Integer> list = Arrays.asList(1,2,3,4);
-		list.add(5);
-		System.out.println(list);
+//		Map<String, String> map = new HashMap<String, String>();
+//		System.out.println(map.put("a", "1"));
+//		System.out.println(map.put("a", "2"));
+//		System.out.println(map.put("a", "3"));
+//		System.out.println("----------------");
+//		System.out.println(0000012);
+//		System.out.println(Modifier.FINAL);
+//		System.out.println(Modifier.PUBLIC | Modifier.FINAL);
+//		System.out.println("----------------");
+		AtomicLong nextUniqueNumber = new AtomicLong();
+		for(int i=0;i<100;i++){
+			System.out.println(nextUniqueNumber.getAndIncrement());
+		}
+		
 	}
 }
