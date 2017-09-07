@@ -62,7 +62,6 @@
 			<aop:before method="print" pointcut-ref="addtime" />
 			<aop:after method="print" pointcut-ref="addtime"/>
 		</aop:aspect>
-		
 	</aop:config>
 	
 	<bean name="operate" class="com.wuxi.service.OperateService" >

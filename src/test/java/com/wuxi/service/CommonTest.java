@@ -14,6 +14,44 @@ import org.junit.Test;
 
 public class CommonTest {
 
+	
+	public static class SleepInterrupt extends Object implements Runnable{  
+        public void run(){  
+            try{  
+                System.out.println("thread-sleep for 2000 seconds"); 
+
+                Thread.sleep(2000000);  
+                System.out.println("thread -waked up");  
+            }catch(InterruptedException e){  
+                System.out.println("thread-interrupted while sleeping");  
+
+                return;    
+            }  
+            System.out.println("thread-leaving normally");  
+        }  
+    }
+
+    public static void main(String[] args) {
+
+        SleepInterrupt si = new SleepInterrupt();  
+        Thread t = new Thread(si);  
+        t.start();  
+
+        //主线程休眠2秒，从而确保刚才启动的线程有机会执行一段时间  
+        try {  
+            Thread.sleep(2000);   
+        }catch(InterruptedException e){  
+            e.printStackTrace();  
+        }  
+        System.out.println("main() - interrupting other thread");  
+        //中断线程t  
+        t.interrupt();  
+
+        System.out.println("main() - leaving");  
+
+    }
+
+
 	@Test
 	public void dateTest(){
 		File f = new File("src");
@@ -79,6 +117,20 @@ public class CommonTest {
 		for(int i=0;i<100;i++){
 			System.out.println(nextUniqueNumber.getAndIncrement());
 		}
-		
+	}
+	
+	@Test
+	public void addd(){
+		LinkedNode<String> queue = new LinkedNode<>();
+		queue.add("aa");
+		queue.remove();
+		queue.remove();
+		queue.print();
+		queue.add("aa");
+		queue.add("ab");
+		queue.add("aa");
+		queue.add("bb");
+		queue.remove();
+		queue.print();
 	}
 }

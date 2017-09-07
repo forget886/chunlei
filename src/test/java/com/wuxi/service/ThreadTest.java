@@ -6,6 +6,10 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import org.junit.Test;
+
+import com.wuxi.service.CommonTest.SleepInterrupt;
+
 public class ThreadTest {
 
 	public static void main(String[] args) {
@@ -23,6 +27,42 @@ public class ThreadTest {
 		executor.execute(new WriteThread("写5",buffer));
 		
 	}
+	
+	public static class SleepInterrupt extends Object implements Runnable{  
+        public void run(){  
+            try{  
+                System.out.println("thread-sleep for 2000 seconds"); 
+                //睡眠也可中断
+                Thread.sleep(2000000);  
+                System.out.println("thread -waked up");  
+            }catch(InterruptedException e){  
+                System.out.println("thread-interrupted while sleeping");  
+                return;    
+            }  
+            System.out.println("thread-leaving normally");  
+        }  
+    }
+
+	@Test
+    public  void interrupte() {
+
+        SleepInterrupt si = new SleepInterrupt();  
+        Thread t = new Thread(si);  
+        t.start();  
+
+        //主线程休眠2秒，从而确保刚才启动的线程有机会执行一段时间  
+        try {  
+            Thread.sleep(2000);   
+        }catch(InterruptedException e){  
+            e.printStackTrace();  
+        }  
+        System.out.println("main() - interrupting other thread");  
+        //中断线程t  
+        t.interrupt();  
+
+        System.out.println("main() - leaving");  
+
+    }
 }
 
 class ReadThread extends Thread{

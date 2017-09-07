@@ -1,22 +1,29 @@
 package com.wuxi.service;
 
+import java.io.IOException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.PropertyValue;
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.Resource;
 
-import com.wuxi.aop.aspect.HelloWorld;
 import com.wuxi.event.MailSend;
 
 
-public class OperateService {
+public class OperateService implements BeanNameAware{
 	
 	private static final Logger logger = LoggerFactory.getLogger(OperateService.class);
 	
 	private  UserService userService;
 	@Autowired
 	private MailSend mailSend;
+	
+	private String beanName;
 	
 	
 	public void setUserService(UserService userService) {
@@ -32,15 +39,32 @@ public class OperateService {
 		//父子容器 子容器要刷新才能获取bean
 		AbstractApplicationContext context = new ClassPathXmlApplicationContext(father);
 		context.refresh();
+		
 		//是否允许循环依赖
 		((ClassPathXmlApplicationContext)context).setAllowCircularReferences(false);
 //		Waiter waiter = (Waiter) context.getBean("waiterProxy");
 //		waiter.greetTo("xixi");
-		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
-		helloWorld.hello();
+//		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
+//		helloWorld.hello();
+		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-//		OperateService operateService = (OperateService) context.getBean("operate");
+		OperateService operateService = (OperateService) context.getBean("operate");
+		System.out.println(operateService.getUserService().getUser("李强"));
+		//获取spring xml配置bean的装配信息
+//		BeanDefinition operation = father.getBeanFactory().getBeanDefinition("car2");
+//		for(PropertyValue pv:operation.getPropertyValues().getPropertyValues()){
+//			System.out.println("属性对：" + pv.getName()  + " : " + pv.getValue());
+//		}
+		//扫描包下的类
+//		try {
+//			Resource[] resources = context.getResources("classpath*:com/wuxi/dao/**/*.class");
+//			for(Resource r: resources){
+//				logger.info("类：" + r.getURL().getPath());
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 //		operateService.getMailSend().sendMail("zz");
 //		Resource resource = context.getResource(".");
 //		try {
@@ -80,6 +104,15 @@ public class OperateService {
 
 	public UserService getUserService() {
 		return userService;
+	}
+
+	@Override
+	public void setBeanName(String name) {
+		beanName = name;
+	}
+	
+	public String getBeanName(){
+		return beanName;
 	}
 
 }

@@ -46,7 +46,7 @@ public class ClassLoadTest {
 		int count = Integer.SIZE-3;
 		System.out.println(count);
 		System.out.println((1 << count) - 1); 
-		System.out.println((1 << count));
+		System.out.println((1 >>> count));
 	}
 	
 	@Test

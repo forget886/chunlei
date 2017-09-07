@@ -18,5 +18,5 @@ public class WaiterImpl implements Waiter{
 	public void serveTo(String name) {
 		System.out.println("serve to " + name);
 	}
-
+	
 }

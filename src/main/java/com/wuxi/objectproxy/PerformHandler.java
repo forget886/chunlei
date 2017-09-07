@@ -2,6 +2,7 @@ package com.wuxi.objectproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 public class PerformHandler implements InvocationHandler{
 	
@@ -22,6 +23,13 @@ public class PerformHandler implements InvocationHandler{
 		return result;
 	}
 
+	
+	public Object getProxy(){
+		return Proxy.newProxyInstance(
+				target.getClass().getClassLoader(), 
+				target.getClass().getInterfaces(), 
+				this);
+	}
 }
 
 
