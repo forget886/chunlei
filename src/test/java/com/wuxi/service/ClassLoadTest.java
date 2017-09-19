@@ -95,8 +95,6 @@ public class ClassLoadTest {
 			setWorkDay.invoke(user, new Date());
 			System.out.println(user);
 			
-			Thread.sleep(1000);
-			
 			Field workDay = clazz.getSuperclass().getDeclaredField("workDay");
 			System.out.println(workDay.getClass());
 			System.out.println(workDay.getDeclaringClass());
@@ -128,8 +126,6 @@ public class ClassLoadTest {
 		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} 
 		

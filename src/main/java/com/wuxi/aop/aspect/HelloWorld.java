@@ -4,4 +4,5 @@ public interface HelloWorld {
 
 	public void hello();
 	
+	public void bye(String name);
 }

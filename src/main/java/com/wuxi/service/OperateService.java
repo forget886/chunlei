@@ -1,17 +1,13 @@
 package com.wuxi.service;
 
-import java.io.IOException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.PropertyValue;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.core.io.Resource;
 
+import com.wuxi.aop.aspect.HelloWorld;
 import com.wuxi.event.MailSend;
 
 
@@ -44,13 +40,14 @@ public class OperateService implements BeanNameAware{
 		((ClassPathXmlApplicationContext)context).setAllowCircularReferences(false);
 //		Waiter waiter = (Waiter) context.getBean("waiterProxy");
 //		waiter.greetTo("xixi");
-//		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
-//		helloWorld.hello();
+		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
+		helloWorld.hello();
+		helloWorld.bye("xiao ma");
 		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-		OperateService operateService = (OperateService) context.getBean("operate");
-		System.out.println(operateService.getUserService().getUser("李强"));
+//		OperateService operateService = (OperateService) context.getBean("operate");
+//		System.out.println(operateService.getUserService().getUser("李强"));
 		//获取spring xml配置bean的装配信息
 //		BeanDefinition operation = father.getBeanFactory().getBeanDefinition("car2");
 //		for(PropertyValue pv:operation.getPropertyValues().getPropertyValues()){
