@@ -10,7 +10,6 @@ public class HelloWorldImpl implements HelloWorld{
 	@Override
 	public void bye(String name) {
 		System.out.println("good bye! " + name);
-		
 	}
 
 }
