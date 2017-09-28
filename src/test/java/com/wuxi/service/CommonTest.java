@@ -3,14 +3,23 @@ package com.wuxi.service;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
 import java.net.URLDecoder;
+import java.net.UnknownHostException;
+import java.text.CharacterIterator;
+import java.text.StringCharacterIterator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.apache.ibatis.javassist.compiler.ast.NewExpr;
 import org.junit.Test;
+import org.springframework.util.ObjectUtils;
+
+import com.wuxi.aop.aspect.HelloWorld;
+import com.wuxi.aop.aspect.HelloWorldImpl;
 
 public class CommonTest {
 
@@ -51,6 +60,14 @@ public class CommonTest {
 
     }
 
+    @Test
+    public void getIp(){
+    	try {
+			System.out.println(InetAddress.getLocalHost().getHostAddress());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+    }
 
 	@Test
 	public void dateTest(){
@@ -120,7 +137,7 @@ public class CommonTest {
 	}
 	
 	@Test
-	public void addd(){
+	public void addQueue(){
 		LinkedNode<String> queue = new LinkedNode<>();
 		queue.add("aa");
 		queue.remove();
@@ -133,4 +150,38 @@ public class CommonTest {
 		queue.remove();
 		queue.print();
 	}
+	
+	@Test
+	public void generateHashcode(){
+		System.out.println(ObjectUtils.nullSafeHashCode(new com.wuxi.bean.vo.Car()));
+		System.out.println(ObjectUtils.nullSafeHashCode(new com.wuxi.bean.vo.Car()));
+	}
+	
+	@Test
+	public void charIterator(){
+		String name = "sdfd233df44rdf33gf";
+//		CharacterIterator  iterator = new StringCharacterIterator(name,0);
+//		char c = iterator.first();
+//		while(c != CharacterIterator.DONE){
+//			if(Character.isDigit(c)){
+//				System.out.println(c);
+//			}
+//			c = iterator.next();
+//		}
+		
+		StringBuffer buffer = new StringBuffer(name);
+		System.out.println(buffer.toString());
+		buffer.setLength(0);
+		
+		System.out.println(buffer.toString().length());
+	}
+	
+	@Test
+	public void assgin(){
+		System.out.println(HelloWorld.class.isAssignableFrom(HelloWorldImpl.class));
+		System.out.println(HelloWorldImpl.class.isAssignableFrom(HelloWorldImpl.class));
+		System.out.println(HelloWorldImpl.class.isAssignableFrom(HelloWorld.class));
+	}
+	
+	
 }

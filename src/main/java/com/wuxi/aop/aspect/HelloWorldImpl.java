@@ -1,5 +1,8 @@
 package com.wuxi.aop.aspect;
 
+import com.wuxi.aop.annotation.Monitorable;
+
+@Monitorable
 public class HelloWorldImpl implements HelloWorld{
 
 	@Override

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.wuxi.aop.Waiter;
 import com.wuxi.aop.aspect.HelloWorld;
 import com.wuxi.event.MailSend;
 

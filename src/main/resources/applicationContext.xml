@@ -65,10 +65,10 @@
 		</aop:aspect>
 	</aop:config> -->
 	
-	<aop:config>
-		<!-- 注意aop:advisor的切点函数不能绑定参数，参数只能通过增强接口方法的入参获取 -->
+	<!-- <aop:config>
+		注意aop:advisor的切点函数不能绑定参数，参数只能通过增强接口方法的入参获取
 		<aop:advisor advice-ref="greetingAdvice" pointcut="execution(* com.wuxi.aop.aspect.HelloWorld.b*(..))"/>
-	</aop:config>
+	</aop:config> -->
 	
 	<bean name="operate" class="com.wuxi.service.OperateService" >
 	    <!-- depends-on="bean" 前置依赖bean,前置依赖的bean会在本bean实例化之前创建好 -->
