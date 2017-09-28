@@ -183,5 +183,12 @@ public class CommonTest {
 		System.out.println(HelloWorldImpl.class.isAssignableFrom(HelloWorld.class));
 	}
 	
+	@Test
+	public void box(){
+		int a = 500;
+		Integer b = 500;
+		System.out.println(a == b);
+	}
+	
 	
 }

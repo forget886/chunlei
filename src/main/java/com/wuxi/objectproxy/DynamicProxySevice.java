@@ -7,10 +7,10 @@ import net.sf.cglib.proxy.Enhancer;
 public class DynamicProxySevice {
 
 	public static void main(String[] args) {
-		//System.out.println("jdk动态代理...");
-		//jdkProxy();
-		System.out.println("随便代理");
-		ObjectProxy();
+		System.out.println("jdk动态代理...");
+		jdkProxy();
+//		System.out.println("随便代理");
+//		ObjectProxy();
 //		System.out.println("\n\ncglib动态代理...");
 //		cglibProxy();
 //		System.out.println("over...");
