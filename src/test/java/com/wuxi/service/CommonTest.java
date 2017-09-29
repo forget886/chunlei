@@ -188,6 +188,7 @@ public class CommonTest {
 		int a = 500;
 		Integer b = 500;
 		System.out.println(a == b);
+		System.out.println(true & false);
 	}
 	
 	

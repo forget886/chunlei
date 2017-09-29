@@ -98,6 +98,8 @@ public class RpcFramework {
                 try {
                     ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
                     try {
+                    	//writeObject 方法用于将对象写入流中。所有对象（包括 String 和数组）都可以通过 writeObject 写入。
+                    	//可将多个对象或基元写入流中。必须使用与写入对象时相同的类型和顺序从相应 ObjectInputstream 中读回对象。
                         output.writeUTF(method.getName());
                         output.writeObject(method.getParameterTypes());
                         output.writeObject(arguments);
@@ -107,6 +109,7 @@ public class RpcFramework {
                             if (result instanceof Throwable) {
                                 throw (Throwable) result;
                             }
+                            //System.out.println(result);
                             return result;
                         } finally {
                             input.close();
