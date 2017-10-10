@@ -13,7 +13,6 @@ public class CommonDao extends BaseDao{
 	 public  List<Map<String, Object>> getTableColumns(String table) {
         Map<String, String> obj = new HashMap<String, String>();
         obj.put("table", table);
-        
         return sqlSession.selectList("common.TABLE_SCHEMA", obj);
      }
 	 

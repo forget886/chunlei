@@ -13,7 +13,7 @@ public class TimeRecoder implements BeanPostProcessor,Ordered{
 
 	private static final Logger logger = LoggerFactory.getLogger(TimeRecoder.class);
 	
-	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-mm-dd hh:MM:ss:SSS");
+	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss:SSS");
 	
  	@Override
 	public int getOrder() {

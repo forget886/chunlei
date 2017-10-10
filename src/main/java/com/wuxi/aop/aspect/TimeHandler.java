@@ -20,6 +20,7 @@ public class TimeHandler {
 	public void printH(JoinPoint joinpoint){
 		System.out.println("连接点： " + joinpoint.getStaticPart().toLongString());
 		System.out.println("连接点的目标方法签名： " + joinpoint.getSignature().getName());
+		System.out.println("代理类： " + joinpoint.getThis().getClass().getName());
 		System.out.println("拦截 hello ");
 	}
 	

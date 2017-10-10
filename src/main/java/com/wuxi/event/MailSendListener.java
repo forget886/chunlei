@@ -1,11 +1,8 @@
 package com.wuxi.event;
 
-import java.util.EventObject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ApplicationContextEvent;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,12 +15,8 @@ public class MailSendListener implements ApplicationListener<MailSendEvent>{
 	 */
 	@Override
 	public void onApplicationEvent(MailSendEvent event) {
-		logger.info("向{}发送邮件",event.getTo());
-		logger.info(event.getClass().isAssignableFrom(EventObject.class)+"");
-		if(event instanceof ApplicationContextEvent){
-			logger.info("true");
-		}
-		
+		logger.info("监听到向{}发送邮件",event.getTo());
+		logger.info(event.getSource().toString());
 	}
 
 }

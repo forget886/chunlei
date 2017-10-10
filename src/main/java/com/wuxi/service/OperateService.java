@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.wuxi.aop.Waiter;
 import com.wuxi.aop.aspect.HelloWorld;
 import com.wuxi.event.MailSend;
 
@@ -43,11 +42,12 @@ public class OperateService implements BeanNameAware{
 //		waiter.greetTo("xixi");
 		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
 		helloWorld.hello();
-		helloWorld.bye("xiao ma");
+//		helloWorld.bye("xiao ma",1);
+		//helloWorld.sell();
 		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-//		OperateService operateService = (OperateService) context.getBean("operate");
+		OperateService operateService = (OperateService) context.getBean("operate");
 //		System.out.println(operateService.getUserService().getUser("李强"));
 		//获取spring xml配置bean的装配信息
 //		BeanDefinition operation = father.getBeanFactory().getBeanDefinition("car2");

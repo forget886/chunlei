@@ -17,7 +17,7 @@
 	</context:component-scan>
 	
 	<!-- 为匹配切面的bean创建代理 -->
-	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
 	
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
 		<property name="locations">
