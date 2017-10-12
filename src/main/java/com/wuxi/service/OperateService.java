@@ -41,9 +41,9 @@ public class OperateService implements BeanNameAware{
 //		Waiter waiter = (Waiter) context.getBean("waiterProxy");
 //		waiter.greetTo("xixi");
 		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
-		helloWorld.hello();
-//		helloWorld.bye("xiao ma",1);
-		//helloWorld.sell();
+//		helloWorld.hello();
+		helloWorld.bye("xiao ma",1);
+//		helloWorld.sell();
 		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());

@@ -12,6 +12,7 @@ import java.util.ServiceLoader;
 
 import org.junit.Test;
 import org.springframework.context.support.AbstractRefreshableConfigApplicationContext;
+import org.springframework.util.ReflectionUtils;
 
 import com.wuxi.bean.vo.User;
 
@@ -128,7 +129,21 @@ public class ClassLoadTest {
 		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
 		} 
-		
+	}
+	
+	@Test
+	public void getMethod(){
+		ClassLoader loader = Thread.currentThread().getContextClassLoader();
+		try {
+			Class<?> clazz = loader.loadClass("com.wuxi.bean.vo.User");
+			Method[] methods = ReflectionUtils.getAllDeclaredMethods(clazz);
+			for(Method method : methods){
+				System.out.println(method.getName());
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 }
