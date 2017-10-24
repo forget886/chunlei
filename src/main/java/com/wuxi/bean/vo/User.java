@@ -1,6 +1,13 @@
 package com.wuxi.bean.vo;
 public class User extends BaseVO{
 
+	public User(){};
+	
+	public User(String name,int age){
+		this.name = name;
+		this.age = age;
+	}
+	
 	private int id;
 	private String name;
 	private int age;

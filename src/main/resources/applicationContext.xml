@@ -102,7 +102,7 @@
 		</property>  -->
 	</bean>
 	
-	<bean class="com.wuxi.service.animal.Pig" autowire-candidate="false" lazy-init="true"/>
+	<bean class="com.wuxi.service.animal.Pig" autowire-candidate="false" />
 	<bean class="com.wuxi.service.animal.Tiger" primary="true" scope="prototype">
 		<aop:scoped-proxy/>
 	</bean>

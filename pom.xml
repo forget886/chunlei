@@ -54,26 +54,26 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>${spring.version}</version>
-		</dependency> -->
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<!-- <dependency>
+	    <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
 			<version>${spring.version}</version>
-		</dependency> -->
-		<!-- <dependency>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring.version}</version>
-		</dependency> -->
+		</dependency>
 		<!-- db -->
 		<dependency>
 		    <groupId>commons-dbcp</groupId>
@@ -156,11 +156,11 @@
 		    <version>3.1</version>
 		</dependency>
 		<!-- redis-->
-		<dependency>
+		<!-- <dependency>
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-redis</artifactId>
 		    <version>1.8.7.RELEASE</version>
-		</dependency>
+		</dependency> -->
 		
 		<!-- <dependency>
 		    <groupId>org.apache.zookeeper</groupId>

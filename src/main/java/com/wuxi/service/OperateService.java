@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.wuxi.aop.aspect.HelloWorld;
+import com.wuxi.bean.vo.User;
 import com.wuxi.event.MailSend;
 
 
@@ -15,7 +15,7 @@ public class OperateService implements BeanNameAware{
 	
 	private static final Logger logger = LoggerFactory.getLogger(OperateService.class);
 	
-	private  UserService userService;
+	private   UserService userService;
 	@Autowired
 	private MailSend mailSend;
 	
@@ -31,24 +31,26 @@ public class OperateService implements BeanNameAware{
 	}
 
 	public static void main(String[] args) {
-		AbstractApplicationContext father = new ClassPathXmlApplicationContext("applicationContext.xml");
+		//AbstractApplicationContext father = new ClassPathXmlApplicationContext("applicationContext.xml");
 		//父子容器 子容器要刷新才能获取bean
-		AbstractApplicationContext context = new ClassPathXmlApplicationContext(father);
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		context.refresh();
-		
 		//是否允许循环依赖
-		((ClassPathXmlApplicationContext)context).setAllowCircularReferences(false);
+		//((ClassPathXmlApplicationContext)context).setAllowCircularReferences(false);
 //		Waiter waiter = (Waiter) context.getBean("waiterProxy");
 //		waiter.greetTo("xixi");
-		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
+//		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
 //		helloWorld.hello();
-		helloWorld.bye("xiao ma",1);
+//		helloWorld.bye("xiao ma",1);
 //		helloWorld.sell();
 		
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-		OperateService operateService = (OperateService) context.getBean("operate");
-//		System.out.println(operateService.getUserService().getUser("李强"));
+		UserService userService = (UserService) context.getBean("userService");
+//		User user = new User("李强",2);
+//		user.setId(2);
+//		userService.updateUser(user);
+		System.out.println(userService.getUser("李强"));
 		//获取spring xml配置bean的装配信息
 //		BeanDefinition operation = father.getBeanFactory().getBeanDefinition("car2");
 //		for(PropertyValue pv:operation.getPropertyValues().getPropertyValues()){
@@ -74,7 +76,6 @@ public class OperateService implements BeanNameAware{
 //		logger.info(car.getClass().getName());
 //		CarFactoryBean carFactoryBean = (CarFactoryBean) context.getBean("&car2");
 //		logger.info(carFactoryBean.getClass().getName());
-//		logger.info(operateService.getUserService().getUser("李强"));
 //		ListableBeanFactory factory = context;
 //		logger.info("bean count:{}",factory.getBeanDefinitionCount());
 //		for(String name : factory.getBeanDefinitionNames()){
@@ -93,7 +94,7 @@ public class OperateService implements BeanNameAware{
 //		Car car = context.getBean(Car.class);
 //		System.out.println(car);
 		context.destroy();
-		father.destroy();
+		//father.destroy();
 	}
 	
 	public MailSend getMailSend(){

@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.ibatis.javassist.compiler.ast.NewExpr;
@@ -198,6 +199,12 @@ public class CommonTest {
 		System.out.println(map.putIfAbsent("a", 1));
 		System.out.println(map.putIfAbsent("a", 2));
 		System.out.println(map.putIfAbsent("a", 3));
+	}
+	
+	@Test
+	public void time(){
+		System.out.println(TimeUnit.MINUTES.toMillis(1));
+		System.out.println(System.currentTimeMillis());
 	}
 	
 }

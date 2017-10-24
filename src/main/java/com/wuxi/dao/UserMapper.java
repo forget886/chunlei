@@ -10,4 +10,9 @@ public interface UserMapper {
 
 	//@Select("select id,name,age,school,borth_time as borthTime,work_day as workDay,date_create as dateCreate from User where name = #{name}")
 	public List<User> queryByName(String name);
+	
+	public int addUser(User user);
+	
+	public int updateUser(User user);
+	
 }

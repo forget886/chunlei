@@ -23,7 +23,7 @@
 			<charset>UTF-8</charset>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
-			<level>DEBUG</level>
+			<level>INFO</level>
 		</filter>
 	</appender>
 
@@ -62,24 +62,24 @@
 	</appender>
 	
 	<logger name="com.wuxi" additivity="false">
-		<level value="debug" />
+		<level value="info" />
 		<appender-ref ref="APP_LOG" />
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="java.sql" additivity="false">
+	<!-- <logger name="java.sql" additivity="false">
 		<level value="debug" />
 		<appender-ref ref="SQL_INFO" />
 		<appender-ref ref="SQL_ERROR" />
 		<appender-ref ref="STDOUT" />
-	</logger>
+	</logger> -->
 	
-	<logger name="com.wuxi.dao" additivity="false">
+	<!-- <logger name="com.wuxi.dao" additivity="false">
 		<level value="info" />
 		<appender-ref ref="SQL_INFO" />
 		<appender-ref ref="SQL_ERROR" />
 		<appender-ref ref="STDOUT" />
-	</logger>
+	</logger> -->
 	
 	<!-- <logger name="org.apache.ibatis" additivity="false">
 		<level value="debug" />
@@ -95,11 +95,11 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	 -->
-	<!-- <logger name="org.springframework.jdbc" additivity="false">
-		<level value="trace" />
+	<logger name="org.springframework" additivity="false">
+		<level value="info" />
 		<appender-ref ref="SQL_INFO" />
 		<appender-ref ref="STDOUT" />
-	</logger> -->
+	</logger>
 
 	<root>
 		<level value="info" />
