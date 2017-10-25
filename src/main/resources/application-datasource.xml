@@ -85,7 +85,7 @@
     </tx:advice>
     
     <aop:config>
-    	<aop:pointcut expression="execution(* com.wuxi.service.*service.*(..))" id="serviceMethods"/>
+    	<aop:pointcut expression="execution(* com.wuxi.service.*Service.*(..))" id="serviceMethods"/>
     	<aop:advisor pointcut-ref="serviceMethods" advice-ref="txAdvice"/>
     </aop:config> -->
     

@@ -67,6 +67,8 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
+	<logger name="org.springframework" level="ERROR"/>
+	
 	<!-- <logger name="java.sql" additivity="false">
 		<level value="debug" />
 		<appender-ref ref="SQL_INFO" />
@@ -95,11 +97,11 @@
 		<appender-ref ref="STDOUT" />
 	</logger>
 	 -->
-	<logger name="org.springframework" additivity="false">
+	<!-- <logger name="org.springframework" additivity="false">
 		<level value="info" />
 		<appender-ref ref="SQL_INFO" />
 		<appender-ref ref="STDOUT" />
-	</logger>
+	</logger> -->
 
 	<root>
 		<level value="info" />
