@@ -10,8 +10,25 @@ public class SerializeTest {
 	public void serialize(){
 		System.out.println(JsonUtil.toJson(new Car(0)));
 	}
+	
+	@Test
+	public void extend(){
+		Car car = new Car(1);
+		System.out.println(car instanceof Car);
+		System.out.println(car instanceof Shop);
+		Shop shop = new Shop(2);
+		System.out.println(shop instanceof Shop);
+		System.out.println(shop instanceof Car);
+	}
 }
 
+class Shop extends Car{
+
+	public Shop(int brand) {
+		super(brand);
+	}
+	
+}
 
 class Car{
 	
