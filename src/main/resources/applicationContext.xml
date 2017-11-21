@@ -75,7 +75,11 @@
  		<!-- <constructor-arg index="" value=""/>
 		<constructor-arg name="" value=""/>
 		<constructor-arg name="" ref=""/> -->
-		<constructor-arg name="name" value="正则"/>
+		<constructor-arg name="name" value="正则" />
+		<!-- 讲一个方法申明成返回某个bean,但实际返回的bean是用lookup-method指定的,以此达到解耦的目的-->
+		<!-- <lookup-method name="" bean=""/> -->
+		<!-- 不仅可以替换方法返回类型，还能替换原来方法的逻辑(replacer引用的bean继承org.springframework.beans.factory.support.MethodReplacer接口)-->
+		<!-- <replaced-method name="" replacer=""/> -->
 		<property name="userService" ref="userService" ></property>
 		<!-- <property name="car.name"  value="宝马"/> 级联属性，前提要先new Car()-->
 		<!-- <property name="">
