@@ -31,7 +31,7 @@ public class CarFactoryBean implements FactoryBean<Car>{
 
 	@Override
 	public boolean isSingleton() {
-		return false;
+		return true;
 	}
 
 	public void setBrand(String brand) {

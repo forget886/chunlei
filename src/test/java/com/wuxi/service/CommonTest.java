@@ -19,12 +19,17 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.apache.ibatis.javassist.compiler.ast.NewExpr;
 import org.junit.Test;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import com.wuxi.aop.aspect.HelloWorld;
 import com.wuxi.aop.aspect.HelloWorldImpl;
 
 public class CommonTest {
 
+	@Test
+	public void relative(){
+		System.out.println(StringUtils.applyRelativePath("/ff/cc","aa/bb"));
+	}
 	
 	public static class SleepInterrupt extends Object implements Runnable{  
         public void run(){  

@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.Scope;
 
 import com.wuxi.bean.vo.Car;
 
@@ -22,6 +23,7 @@ public class BeansFactory {
     public static final Logger logger = LoggerFactory.getLogger(BeansFactory.class);
     
 	@Bean("car")
+	@Scope("prototype")
 	public Car getCar(){
 		logger.info("使用java config方式创建car实例");
 		Car car = new Car();

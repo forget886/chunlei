@@ -70,7 +70,7 @@
 		<aop:advisor advice-ref="greetingAdvice" pointcut="execution(* com.wuxi.aop.aspect.HelloWorld.b*(..))"/>
 	</aop:config> -->
 	
-	<bean name="operate" class="com.wuxi.service.OperateService" >
+	<bean id="operate" name="operatea" class="com.wuxi.service.OperateService" >
 	    <!-- depends-on="bean" 前置依赖bean,前置依赖的bean会在本bean实例化之前创建好 -->
  		<!-- <constructor-arg index="" value=""/>
 		<constructor-arg name="" value=""/>
@@ -80,31 +80,37 @@
 		<!-- <lookup-method name="" bean=""/> -->
 		<!-- 不仅可以替换方法返回类型，还能替换原来方法的逻辑(replacer引用的bean继承org.springframework.beans.factory.support.MethodReplacer接口)-->
 		<!-- <replaced-method name="" replacer=""/> -->
-		<property name="userService" ref="userService" ></property>
+		<property name="userService" ref="userService"/>
 		<!-- <property name="car.name"  value="宝马"/> 级联属性，前提要先new Car()-->
 		<!-- <property name="">
-			<list>
+			<list >
 				<value></value>
 				<value></value>
 				<ref bean=""/>
 			</list>
-		</property>-->
+		</property> -->
 		<!-- <property name="">
 			<set merge="">
 				<ref parent="" bean=""/>
 			</set>
 		</property> -->
 		<!-- <property name="">
-			<map>
-				<entry key="" value-ref=""></entry>
+			<map >
+				<entry key="" value-ref="" ></entry>
 			</map>
 		</property>
 		<property name="">
 			<props>
 				<prop key="name">zh</prop>
 			</props>
-		</property>  -->
+		</property> -->
 	</bean>
+	
+	<alias name="operate" alias="operateb"/>
+	
+	<!-- <beans>
+		<bean></bean>
+	</beans> -->
 	
 	<bean class="com.wuxi.service.animal.Pig" autowire-candidate="false" />
 	<bean class="com.wuxi.service.animal.Tiger" primary="true" scope="prototype">

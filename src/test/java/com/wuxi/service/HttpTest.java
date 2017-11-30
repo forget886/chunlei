@@ -9,6 +9,7 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.multipart.FilePart;
 import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
+import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.junit.Test;
 
 import com.wuxi.util.CommonsUtil;
@@ -28,14 +29,17 @@ public class HttpTest {
 	 */
 	@Test
 	public void uploadFile(){
-		File f = CommonsUtil.getFileByUrl("http://img.souche.com/files/default/bd93bd76e7969dc1e98263a4b9ca61f4.jpg", "/Users/dasouche/Downloads/aa.jpg");
-		//File f = new File("/Users/dasouche/Downloads/5.jpg");
-		PostMethod filePost = new PostMethod("http://shuoke.autohome.com.cn/uploadify/ashx/UploadImage_utf8.ashx?OperType=UploadPicture&key=ArticleContent&Size=-620");
+		//File f = CommonsUtil.getFileByUrl("http://img.souche.com/files/default/bd93bd76e7969dc1e98263a4b9ca61f4.jpg", "/Users/dasouche/Downloads/aa.jpg");
+		File f = new File("/Users/dasouche/Downloads/3.jpg");
+		PostMethod filePost = new PostMethod("https://up.qbox.me/");
 		GZIPInputStream gis = null;
 		try {
 			Part image = new FilePart("file", "aa.jpg", f, "image/jpeg", "utf-8");
-			Part[] parts = { image };
-			filePost.addRequestHeader("Cookie", "fvlid=1478851514874x7WkbJeK; mallsfvi=1478851514874x7WkbJeK%7Cwww.baidu.com%7C238813433; sessionid=7B1AA78F-A35B-4DFB-A7C9-3036A7FA2ECD%7C%7C2016-11-11+16%3A04%3A58.293%7C%7Cwww.baidu.com; _ga=GA1.3.1851741995.1478851525; sfvi=1492398522063grSnIOZh%7Chttp%3A%2F%2Fwww.autohome.com.cn%2Fhangzhou%2F; sessionfid=2952909855; ahpau=1; sessionip=61.153.7.250; iknow=top100=1&myinfo=1&advance=1; skviewid=531557%2C504243; sessionuid=7B1AA78F-A35B-4DFB-A7C9-3036A7FA2ECD%7C%7C2016-11-11+16%3A04%3A58.293%7C%7Cwww.baidu.com; __utma=1.1851741995.1478851525.1493968471.1493970534.17; __utmb=1.0.10.1493970534; __utmc=1; __utmz=1.1493970534.17.9.utmcsr=shuoke.autohome.com.cn|utmccn=(referral)|utmcmd=referral|utmcct=/; pcpopclub=0271D24063BECFC7A188286522D3667EF0E669BA780295707C05320213E16D8368BBE93DE95F35298C14FBD234D68005CBC8CB6DAE1D932255E4D43C79DB87A64DBCEA5B5A491E240AE59E14118F133D2745D7E6F0C13FC736137B65EAF3C10D0588D86D0D5EA7537A701584567556553E25CFDBFCB4C9AE66C6C230CA174D8B2778D3C97F37EE9175073B7E251C444A779F330E2E10E4C3AF63A21ADABB54CF36F7FCF8EA28FB904CB000A2A31901ABBBC91B5F4FEE19E5AD10D0A36595FE955B83511A96D98B5849ED50EB0D47591BC9C211EE39698C38141AFBF2FEB8277B65B072FE3CAB191B30FC6DB4960B9813719B12F29ED12DAB2CA63C6D3869CC3386EBB14D82750C963787280B1660DCA414DAD9C618E81CEA70D18335FC12A8E8F94F34F2; clubUserShow=5793684|564|30|justzt|0|0|0||2017-05-05 15:51:47|0; autouserid=5793684; sessionuserid=5793684; sessionlogin=61256a1b1c8d4df5bf8d2f917290c83900586794; ahpvno=73; slvi=0%7Chttp%3A%2F%2Faccount.autohome.com.cn%2F%3Fbackurl%3Dhttp%253A%252F%252Fshuoke.autohome.com.cn%252F; ref=www.baidu.com%7C0%7C0%7C0%7C2017-05-05+15%3A50%3A39.512%7C2017-03-02+15%3A54%3A54.843; sessionvid=BB06DD8F-1F97-44C3-B967-B4929D0A35D9; area=330199");
+			Part token = new StringPart("token", "6VId7mt7zh2bN-I-bmp0p25aXjJUeIB3djNlRv6g:aTskAf50diI2jvLrQtZJWwn3y68=:eyJzY29wZSI6ImNhcnVwbG9hZCIsImRlYWRsaW5lIjoxNTExMjQ0MDc2fQ==", "utf-8");
+			Part key = new StringPart("key", "source/carupload/photo/2017/1121/11/20171121110113905807.jpg","utf-8");
+			Part[] parts = { image,token};
+			filePost.addRequestHeader("origin", "https://www.iautos.cn");
+			//filePost.addRequestHeader("Cookie", "fvlid=1478851514874x7WkbJeK; mallsfvi=1478851514874x7WkbJeK%7Cwww.baidu.com%7C238813433; sessionid=7B1AA78F-A35B-4DFB-A7C9-3036A7FA2ECD%7C%7C2016-11-11+16%3A04%3A58.293%7C%7Cwww.baidu.com; _ga=GA1.3.1851741995.1478851525; sfvi=1492398522063grSnIOZh%7Chttp%3A%2F%2Fwww.autohome.com.cn%2Fhangzhou%2F; sessionfid=2952909855; ahpau=1; sessionip=61.153.7.250; iknow=top100=1&myinfo=1&advance=1; skviewid=531557%2C504243; sessionuid=7B1AA78F-A35B-4DFB-A7C9-3036A7FA2ECD%7C%7C2016-11-11+16%3A04%3A58.293%7C%7Cwww.baidu.com; __utma=1.1851741995.1478851525.1493968471.1493970534.17; __utmb=1.0.10.1493970534; __utmc=1; __utmz=1.1493970534.17.9.utmcsr=shuoke.autohome.com.cn|utmccn=(referral)|utmcmd=referral|utmcct=/; pcpopclub=0271D24063BECFC7A188286522D3667EF0E669BA780295707C05320213E16D8368BBE93DE95F35298C14FBD234D68005CBC8CB6DAE1D932255E4D43C79DB87A64DBCEA5B5A491E240AE59E14118F133D2745D7E6F0C13FC736137B65EAF3C10D0588D86D0D5EA7537A701584567556553E25CFDBFCB4C9AE66C6C230CA174D8B2778D3C97F37EE9175073B7E251C444A779F330E2E10E4C3AF63A21ADABB54CF36F7FCF8EA28FB904CB000A2A31901ABBBC91B5F4FEE19E5AD10D0A36595FE955B83511A96D98B5849ED50EB0D47591BC9C211EE39698C38141AFBF2FEB8277B65B072FE3CAB191B30FC6DB4960B9813719B12F29ED12DAB2CA63C6D3869CC3386EBB14D82750C963787280B1660DCA414DAD9C618E81CEA70D18335FC12A8E8F94F34F2; clubUserShow=5793684|564|30|justzt|0|0|0||2017-05-05 15:51:47|0; autouserid=5793684; sessionuserid=5793684; sessionlogin=61256a1b1c8d4df5bf8d2f917290c83900586794; ahpvno=73; slvi=0%7Chttp%3A%2F%2Faccount.autohome.com.cn%2F%3Fbackurl%3Dhttp%253A%252F%252Fshuoke.autohome.com.cn%252F; ref=www.baidu.com%7C0%7C0%7C0%7C2017-05-05+15%3A50%3A39.512%7C2017-03-02+15%3A54%3A54.843; sessionvid=BB06DD8F-1F97-44C3-B967-B4929D0A35D9; area=330199");
 			filePost.setRequestEntity(new MultipartRequestEntity(parts, filePost.getParams()));
 			HttpClient clients = new HttpClient();
 			
@@ -70,8 +74,8 @@ public class HttpTest {
 			}
 			if(filePost != null)
 				filePost.releaseConnection();
-			if(f.exists())
-				f.delete();
+//			if(f.exists())
+//				f.delete();
 		}
 		
 	}
