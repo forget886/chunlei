@@ -13,11 +13,11 @@ public class HelloWorldImpl implements HelloWorld{
 		//spring aop不拦截对象内部调用的方法
 		//https://note.youdao.com/web/#/file/XL2UO9H/note/WEB16df64fbe984883fd5e70163fb34614a/
 		//https://note.youdao.com/web/#/file/XL2UO9H/note/WEB654cd359feb73a5a6e7dcc87b3e985c6/
-		if(AopContext.currentProxy() != null){
-			((HelloWorld)AopContext.currentProxy()).sell();
-		}else{
+//		if(AopContext.currentProxy() != null){
+//			((HelloWorld)AopContext.currentProxy()).sell();
+//		}else{
 			this.sell();
-		}
+//		}
 		
 	}
 

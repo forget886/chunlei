@@ -9,9 +9,9 @@ public class DynamicProxySevice {
 	public static void main(String[] args) {
 //		System.out.println("jdk动态代理...");
 //		jdkProxy();
-		// System.out.println("随便代理");
-		// ObjectProxy();
-		// System.out.println("\n\ncglib动态代理...");
+//		 System.out.println("随便代理");
+//		 ObjectProxy();
+		 System.out.println("\n\ncglib动态代理...");
 		 cglibProxy();
 		 System.out.println("over...");
 	}
@@ -21,7 +21,7 @@ public class DynamicProxySevice {
 		Performance proxy = (Performance) Proxy.newProxyInstance(Performance.class.getClassLoader(),
 				new Class[] { Performance.class }, new ObjectHandler());
 		proxy.add(0);
-		proxy.remove(0);
+		proxy.remove(1);
 	}
 
 	public static void jdkProxy() {
@@ -45,11 +45,12 @@ public class DynamicProxySevice {
 	public static void cglibProxy() {
 		// System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY,
 		// "/Users/dasouche/Downloads");
-		CGlibProxy proxy = new CGlibProxy();
+		PerformanceImpl performance1 = new PerformanceImpl();
+		CGlibProxy proxy = new CGlibProxy(performance1);
 		// cglib 中加强器，用来创建动态代理
 		Enhancer enhancer = new Enhancer();
 		// 设置要创建动态代理的类
-		enhancer.setSuperclass(PerformanceImpl.class);
+		enhancer.setSuperclass(performance1.getClass());
 		// 设置回调，这里相当于是对于代理类上所有方法的调用，都会调用CallBack，而Callback则需要实行intercept()方法进行拦截
 		enhancer.setCallback(proxy);
 		// 通过字节码技术动态生成子类实例
@@ -60,7 +61,7 @@ public class DynamicProxySevice {
 		// performance.getClass().getSimpleName());
 
 		performance.add(30);
-		performance.remove(50);
+//		performance.remove(50);
 		performance.check(20);
 	}
 

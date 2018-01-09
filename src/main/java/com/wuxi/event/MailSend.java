@@ -14,8 +14,8 @@ public class MailSend implements ApplicationContextAware{
 	private static final Logger logger = LoggerFactory.getLogger(MailSend.class); 
 	
 	protected ApplicationContext ctx;
-	@Autowired
-	 MailSendPlus mailsendplus;
+//	@Autowired
+//	 MailSendPlus mailsendplus;
 	
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -23,11 +23,11 @@ public class MailSend implements ApplicationContextAware{
 	}
 
 	public void sendMail(String to){
-		mailsendplus.sendMail(to);
-//		logger.info("模拟发送邮件：{}",to);
-//		MailSendEvent mse = new MailSendEvent(ctx, to);
-//		//向容器所有时间监听器发送事件
-//		ctx.publishEvent(mse);
+		//mailsendplus.sendMail(to);
+		logger.info("模拟发送邮件：{}",to);
+		MailSendEvent mse = new MailSendEvent(ctx, to);
+		//向容器所有事件监听器发送事件
+		ctx.publishEvent(mse);
 	}
 	
 }

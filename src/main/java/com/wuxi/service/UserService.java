@@ -48,13 +48,11 @@ public class UserService extends BaseDao implements DisposableBean,InitializingB
 //		return userDao.queryByName(name).toString();
 //	}
 	
-	@Transactional
 	public String getUser(String name){
 		
 		return userMapper.queryByName(name).toString();
 	}
 
-	@Transactional
 	public void updateUser(User user){
 		int a = userMapper.updateUser(user);
 		System.out.println(a);

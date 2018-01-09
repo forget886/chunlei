@@ -20,5 +20,6 @@ public class Tiger implements Animal{
 	public void eat() {
 		logger.info("吃肉");
 	}
+	
 
 }

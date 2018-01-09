@@ -112,7 +112,7 @@
 		<bean></bean>
 	</beans> -->
 	
-	<bean class="com.wuxi.service.animal.Pig" autowire-candidate="false" />
+	<bean class="com.wuxi.service.animal.Pig" autowire-candidate="false" init-method="init"/>
 	<bean class="com.wuxi.service.animal.Tiger" primary="true" scope="prototype">
 		<aop:scoped-proxy/>
 	</bean>
