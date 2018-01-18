@@ -111,6 +111,11 @@ public class ClassLoadTest {
 			 * 4、method的invoke方法只能调用public方法，private、protected方法会报IllegalAccessException,要setAccessible(true)
 			 */
 			System.out.println(user);
+			for(Field f: clazz.getDeclaredFields()){
+				f.setAccessible(true);
+				Object object=  f.get(user);
+				System.out.println(f.getName() + " : " + object);
+			}
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

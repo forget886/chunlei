@@ -193,9 +193,9 @@ public class CommonTest {
 	@Test
 	public void box(){
 		int a = 500;
-		Integer b = 500;
+		Integer b = a + 0;
+		//数值运算一律拆箱
 		System.out.println(a == b);
-		System.out.println(true & false);
 	}
 	
 	@Test
