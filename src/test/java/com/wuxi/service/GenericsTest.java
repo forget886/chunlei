@@ -16,6 +16,7 @@ public class GenericsTest {
 		System.out.println(list.size());
 	}
 	
+	//泛型方法：在方法返回类型之前加类型参数申明部分<>
 	public static <T> void append(List<T> list,Class<T> clazz){
 		try {
 			T t = clazz.newInstance();
@@ -28,7 +29,7 @@ public class GenericsTest {
 	}
 }
 
-
+//泛型类：在类名后面添加类型参数声明部分
 class Node<T>{
 	public T data;
 	public Node(T data){
