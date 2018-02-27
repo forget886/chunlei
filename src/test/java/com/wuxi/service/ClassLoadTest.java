@@ -1,5 +1,6 @@
 package com.wuxi.service;
 
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -18,6 +19,45 @@ import com.wuxi.bean.vo.User;
 
 public class ClassLoadTest {
 
+	
+	@Test
+	public void classLoad(){
+		System.out.println(ClassLoadTest.class.getClassLoader());
+		ClassLoader classLoader = new ClassLoader() {
+			@Override
+			public Class<?> loadClass(String name) throws ClassNotFoundException {
+				try {
+					//根据全限定名加载二进制数据
+					String fileName = name.substring(name.lastIndexOf(".")+1) + ".class";
+					InputStream is = getClass().getResourceAsStream(fileName);
+					if(is == null){
+						return super.loadClass(name);
+					}
+					byte[] b = new byte[is.available()];
+					is.read(b);
+					//将二进制数据转化为class对象
+					return defineClass(name, b, 0, b.length);
+				} catch (Exception e) {
+					throw new ClassNotFoundException(name);
+				}
+			}
+		};
+		
+		Object obj = null;
+		try {
+			obj = classLoader.loadClass("com.wuxi.service.ClassLoadTest").newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		System.out.println(obj.getClass());
+		//不同类加载器加载的类是不同的
+		System.out.println(obj instanceof com.wuxi.service.ClassLoadTest);
+	}
+	
 	@Test
 	public void showInterface(){
 		for(Class<?> intf : AbstractRefreshableConfigApplicationContext.class.getInterfaces()){
@@ -50,12 +90,13 @@ public class ClassLoadTest {
 		System.out.println((1 >>> count));
 	}
 	
+	
 	@Test
 	public void load(){
 		ClassLoader loader = Thread.currentThread().getContextClassLoader();
-		System.out.println("current loader: " + loader);
-		System.out.println("parent loader: " + loader.getParent());
-		System.out.println("grandparent loader: " + loader.getParent().getParent());
+		System.out.println("current loader: " + loader + "  "+(loader instanceof ClassLoader));
+		System.out.println("parent loader: " + loader.getParent() + "  "+(loader.getParent() instanceof ClassLoader));
+		System.out.println("grandparent loader: " + loader.getParent().getParent()+ "  "+(loader.getParent().getParent() instanceof ClassLoader));
 	}
 	
 	@Test
