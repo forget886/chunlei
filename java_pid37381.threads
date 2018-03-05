@@ -1,0 +1,47 @@
+Thread 0x7bfd3aee0
+
+  locals:
+
+Thread 0x7bfd3b058
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.ref.ReferenceQueue.remove(J)Ljava/lang/ref/Reference; (ReferenceQueue.java:143)
+  at java.lang.ref.ReferenceQueue.remove()Ljava/lang/ref/Reference; (ReferenceQueue.java:164)
+  at java.lang.ref.Finalizer$FinalizerThread.run()V (Finalizer.java:209)
+
+  locals:
+    objectId=0x7bec20c98, line=1
+    objectId=0x7bfd3b1d8, line=1
+    objectId=0x7bec20c98, line=2
+    objectId=0x7bfd3b058, line=3
+    objectId=0x7bec26a30, line=3
+
+Thread 0x7bfd42438
+  at java.lang.Object.wait(J)V (Native Method)
+  at java.lang.Object.wait()V (Object.java:502)
+  at java.lang.ref.Reference.tryHandlePending(Z)Z (Reference.java:191)
+  at java.lang.ref.Reference$ReferenceHandler.run()V (Reference.java:153)
+
+  locals:
+    objectId=0x7bfd425b0, line=1
+    objectId=0x7bfd425b0, line=2
+    objectId=0x7bfd42438, line=3
+
+Thread 0x7bec37ab8
+  at java.lang.OutOfMemoryError.<init>()V (OutOfMemoryError.java:48)
+  at java.util.Arrays.copyOf([Ljava/lang/Object;ILjava/lang/Class;)[Ljava/lang/Object; (Arrays.java:3210)
+  at java.util.Arrays.copyOf([Ljava/lang/Object;I)[Ljava/lang/Object; (Arrays.java:3181)
+  at java.util.ArrayList.grow(I)V (ArrayList.java:261)
+  at java.util.ArrayList.ensureExplicitCapacity(I)V (ArrayList.java:235)
+  at java.util.ArrayList.ensureCapacityInternal(I)V (ArrayList.java:227)
+  at java.util.ArrayList.add(Ljava/lang/Object;)Z (ArrayList.java:458)
+  at com.wuxi.service.OutofmemoryTest.main([Ljava/lang/String;)V (OutofmemoryTest.java:11)
+
+  locals:
+    objectId=0x7bf628660, line=1
+    objectId=0x7bec1c5a8, line=1
+    objectId=0x7bf628660, line=2
+    objectId=0x7bec4c440, line=3
+    objectId=0x7bec4c440, line=6
+    objectId=0x7bfd3a2c8, line=6
+    objectId=0x7bec4c440, line=7
+
