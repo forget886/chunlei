@@ -1,12 +1,18 @@
 package com.wuxi.service;
 
 import java.util.ArrayList;
+
+
 import java.util.List;
 
 import org.junit.Test;
-
+//线上
+//-XX:+CMSClassUnloadingEnabled -XX:CMSInitiatingOccupancyFraction=80 -XX:CMSMaxAbortablePrecleanTime=5000 -XX:+ExplicitGCInvokesConcurrent -XX:+HeapDumpOnOutOfMemoryError 
+//-XX:HeapDumpPath=/home/souchelogs/java.hprof -XX:InitialHeapSize=2147483648 -XX:MaxDirectMemorySize=536870912 -XX:MaxHeapSize=2147483648 -XX:MaxNewSize=1073741824 -XX:NewSize=1073741824 
+//-XX:OldPLABSize=16 -XX:+PrintGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:SurvivorRatio=10 -XX:+UseCMSCompactAtFullCollection -XX:+UseCMSInitiatingOccupancyOnly -XX:+UseCompressedClassPointers
+//-XX:+UseCompressedOops -XX:+UseConcMarkSweepGC -XX:+UseParNewGC 
 public class OutofmemoryTest {
-
+	
 	static List<String> list = null;
 	
 	private int  leak = 1;
@@ -30,22 +36,18 @@ public class OutofmemoryTest {
 //		}
 		//jdk1.8 静态变量、常量池都放到堆里
 		//静态 溢出 会dump heap
-		list = new ArrayList<>();
-		int i = 0;
-		try {
-			while(true){
-				list.add(String.valueOf(i++));
-			}
-		} catch (OutOfMemoryError e) {
-			e.printStackTrace(System.err);
-		}
+//		list = new ArrayList<>();
+//		int i = 0;
+//		while(true){
+//			list.add(String.valueOf(i++));
+//		}
 		
 		//常量溢出 会dump heap
-//		List<String> list2 = new ArrayList<>();
-//		int j = 0;
-//		while(true){
-//			list2 .add(String.valueOf(j++).intern());
-//		}
+		List<String> list2 = new ArrayList<>();
+		int j = 0;
+		while(true){
+			list2 .add(String.valueOf(j++).intern());
+		}
 		
 		//-Xss256k 
 		//栈溢出 不会dump heap
