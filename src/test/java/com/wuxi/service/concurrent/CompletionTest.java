@@ -1,4 +1,4 @@
-package com.wuxi.service;
+package com.wuxi.service.concurrent;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang.math.RandomUtils;
 import org.junit.Test;
 
-public class CompleteTest {
+public class CompletionTest {
 
 	@Test
 	public void run(){

@@ -1,4 +1,4 @@
-package com.wuxi.service;
+package com.wuxi.service.concurrent;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -44,7 +44,7 @@ public class LockTest {
     }
 
 	@Test
-    public  void interrupte() {
+    public void interrupte() {
 
         SleepInterrupt si = new SleepInterrupt();  
         Thread t = new Thread(si);  
@@ -119,7 +119,7 @@ class BoundedBuffer {
 	   static int count/*队列中存在的数据个数*/;  
 	  
 	   public void put(String name) throws InterruptedException {  
-	     lock.lock(); //此时变量x保存下来
+	     lock.lock();; //此时变量x保存下来
 	     System.out.println(name+ " 抢到锁");
 	     try {  
 	       while (count == items.length){//如果队列满了   
@@ -131,7 +131,7 @@ class BoundedBuffer {
 	    	   return;
 	       }
 	       items[count++] = count-1;//赋值   
-	       notEmpty.signal();//唤醒读线程  
+	       notEmpty.signal();//唤醒读线程
 	     } finally {  
 	       System.out.println(name+ " 写入 count= " + (count-1));
 	       System.out.println(name + " 释放锁");

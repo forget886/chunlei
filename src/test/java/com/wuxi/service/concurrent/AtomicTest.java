@@ -9,7 +9,5 @@ public class AtomicTest {
 		System.out.println(integer.incrementAndGet());
 		System.out.println(integer.getAndIncrement());
 		System.out.println(integer);
-		integer = null;
-		System.gc();
 	}
 }

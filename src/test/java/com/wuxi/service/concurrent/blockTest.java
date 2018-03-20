@@ -1,4 +1,4 @@
-package com.wuxi.service;
+package com.wuxi.service.concurrent;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
