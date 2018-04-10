@@ -9,7 +9,9 @@ public class SortTest {
 	@Test
 	public void sortMP(){
 		int data[] = {23,2,45,3,1,6,8,0,34};
+		//总共跑data.length-1趟
 		for(int i=0; i<data.length-1;i++){
+			//每趟比较data.length-1-i次
 			for(int j=0;j<data.length-1-i;j++){
 				if(data[j]>data[j+1]){
 					int temp = data[j];
@@ -22,7 +24,7 @@ public class SortTest {
 	}
 	
 	@Test
-	public void insetSort(){
+	public void insertSort(){
 		int data[] = {23,2,45,3,1,6,8,0,34};
 		int p;
 		for(int i=1;i<data.length;i++){
