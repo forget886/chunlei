@@ -62,5 +62,26 @@ public class SortTest {
 		
 	}
 	
+	@Test
+	public void halfQueryTest(){
+		int data[] = {0, 1, 2, 3, 6, 8, 23, 34, 45};
+		int key = 34;
+		int start = 0;
+		int end = data.length -1;
+		while(start <= end){
+			int half = (start + end)/2;
+			System.out.println(data[half]);
+			if(data[half] == key){
+				System.out.println(key);
+				break;
+			}else if(key > data[half] ){
+				start = half + 1;
+			}else {
+				end = half -1;
+			}
+		}
+		System.out.println("over");
+	}
+	
 	
 }

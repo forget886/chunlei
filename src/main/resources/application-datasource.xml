@@ -89,5 +89,6 @@
     	<aop:advisor pointcut-ref="serviceMethods" advice-ref="txAdvice"/>
     </aop:config> -->
     
+    <!-- 使用annotation定义事务 @Transactional -->
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
 </beans>

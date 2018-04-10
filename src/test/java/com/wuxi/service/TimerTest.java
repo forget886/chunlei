@@ -1,7 +1,11 @@
 package com.wuxi.service;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import org.junit.Test;
 
 public class TimerTest {
 
@@ -29,5 +33,10 @@ public class TimerTest {
 			throw new RuntimeException();
 		}
 		
+	}
+	
+	@Test
+	public void print(){
+		System.out.println(new Timestamp(System.currentTimeMillis()));
 	}
 }

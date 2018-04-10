@@ -12,7 +12,6 @@ public class ThreadTest {
 	@Test
 	public void create(){
 		ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 45, TimeUnit.SECONDS, new PriorityBlockingQueue<>(10));
-		
 	}
 	
 	
