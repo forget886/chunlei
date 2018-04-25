@@ -12,6 +12,7 @@ import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -30,22 +31,20 @@ public class HttpRequestImplTest implements HttpRequest{
 	public void sendTest() {
 		String url = "http://www.baidu.com";
 		int qps = 3000;
-		int time = 60;
-		String path = "/Users/zhanghui/Desktop/request.txt";
+		int time = 1;
+		String path = "/Users/qingtong/Desktop/request.txt";
 		send(qps, url, time, path);
 	}
 	
 	
 
 	@Override
-	public void send(int qps, String url, int time, String path) {
+	public void send(int qps, final String url, int time, String path) {
 		if (qps <= 0 || StringUtil.isEmpty(url) || time <= 0 || StringUtil.isEmpty(path)) {
 			return;
 		}
-		String logFormat = "%s 耗时：%d ms";
+		final String logFormat = "%s 耗时：%d ms";
 		
-		long deadline = System.currentTimeMillis() + 1000*time;
-	    
 		CompletionService<String> completionService = new ExecutorCompletionService<>(Executors.newFixedThreadPool(2000));
 		for(int i = 0; i<qps; i++){
 			completionService.submit(new Callable<String>() {
@@ -58,21 +57,36 @@ public class HttpRequestImplTest implements HttpRequest{
 				}
 			});
 		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
 		File file = new File(path);
         BufferedWriter writer = null;
+        long deadline = System.currentTimeMillis() + 1000*time;
+        long singleDeadline = time*1000*1000/qps;
+        System.out.println(singleDeadline);
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
 			for(int i=0; i<qps; i++){
 				if(System.currentTimeMillis() > deadline) {
-					System.out.println(i);
+					System.out.println("借宿:"+i);
 					break;
 				}
 				try {
-					Future<String> future = completionService.take();
+					Future<String> future = completionService.poll(singleDeadline, TimeUnit.MICROSECONDS);
 					if(future != null){
 				        try {
 			                writer.write(future.get());
 			                writer.newLine();
+			                System.out.println(i);
+				        } catch (FileNotFoundException e) {
+				            LOG.error("",e);
+				        } catch (IOException e) {
+				            LOG.error("",e);
+				        }
+					}else{
+						try {
+			                writer.write(String.format(logFormat, format.format(new Date()),1));
+			                writer.newLine();
+			                System.out.println(i);
 				        } catch (FileNotFoundException e) {
 				            LOG.error("",e);
 				        } catch (IOException e) {
@@ -103,10 +117,10 @@ public class HttpRequestImplTest implements HttpRequest{
 		}
 	}
 	
-	private void request(String url) {
+	private void request(final String url) {
 		HttpClientParams params = new HttpClientParams();
-        params.setConnectionManagerTimeout(5);
-        params.setSoTimeout(5);
+        params.setConnectionManagerTimeout(1);
+        params.setSoTimeout(1);
 	    HttpClient client = new HttpClient(params);
 		GetMethod getMethod = new GetMethod(url);
 		try {
