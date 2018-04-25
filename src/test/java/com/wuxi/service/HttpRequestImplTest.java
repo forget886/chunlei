@@ -28,7 +28,7 @@ public class HttpRequestImplTest implements HttpRequest{
 	
 	@Test
 	public void sendTest() {
-		String url = "http://www.sina.com";
+		String url = "http://www.baidu.com";
 		int qps = 3000;
 		int time = 60;
 		String path = "/Users/zhanghui/Desktop/request.txt";
@@ -43,13 +43,15 @@ public class HttpRequestImplTest implements HttpRequest{
 			return;
 		}
 		String logFormat = "%s 耗时：%d ms";
+		
 		long deadline = System.currentTimeMillis() + 1000*time;
-		CompletionService<String> completionService = new ExecutorCompletionService<>(Executors.newFixedThreadPool(300));
+	    
+		CompletionService<String> completionService = new ExecutorCompletionService<>(Executors.newFixedThreadPool(2000));
 		for(int i = 0; i<qps; i++){
 			completionService.submit(new Callable<String>() {
 				@Override
 				public String call() throws Exception {
-					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
 					long start = System.currentTimeMillis();
 					request(url);
 					return String.format(logFormat, format.format(new Date()),(System.currentTimeMillis() - start));
@@ -62,6 +64,7 @@ public class HttpRequestImplTest implements HttpRequest{
 			writer = new BufferedWriter(new FileWriter(file));
 			for(int i=0; i<qps; i++){
 				if(System.currentTimeMillis() > deadline) {
+					System.out.println(i);
 					break;
 				}
 				try {
@@ -104,7 +107,6 @@ public class HttpRequestImplTest implements HttpRequest{
 		HttpClientParams params = new HttpClientParams();
         params.setConnectionManagerTimeout(5);
         params.setSoTimeout(5);
-
 	    HttpClient client = new HttpClient(params);
 		GetMethod getMethod = new GetMethod(url);
 		try {
@@ -112,7 +114,10 @@ public class HttpRequestImplTest implements HttpRequest{
 			String response = getMethod.getResponseBodyAsString();
 		} catch (Exception e) {
 			//LOG.error("",e);
-		} 
+		} finally {
+            if (getMethod != null)
+            	getMethod.releaseConnection();
+        }
 	}
 	
 }
