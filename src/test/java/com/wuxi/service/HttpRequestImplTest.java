@@ -80,10 +80,23 @@ public class HttpRequestImplTest implements HttpRequest{
 					LOG.error("",e);
 				} 
 			}
-			writer.flush();
-			writer.close();
+			
 		} catch (IOException e1) {
 			LOG.error("",e1);
+		}finally {
+			if(writer != null) {
+				try {
+					writer.flush();
+				} catch (IOException e1) {
+					LOG.error("",e1);
+				}
+				try {
+					writer.close();
+				} catch (IOException e) {
+					LOG.error("",e);
+				}
+			}
+			
 		}
 	}
 	

@@ -11,3 +11,4 @@ public interface HttpRequest {
 	 */
 	public void send(int qps,String url,int time,String path);
 }
+ 
