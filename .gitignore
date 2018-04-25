@@ -24,3 +24,4 @@ logs/*
 logs/sql/info.log
 
 logs/sql/info.log
+/target/
