@@ -40,7 +40,7 @@ public class UserDao extends BaseDao<User>{
 	
 	public static void main(String[] args) {
 		System.out.println(UserDao.class.getSuperclass().getName());
-		System.out.println(UserDao.class.getGenericSuperclass().getTypeName());
+		//System.out.println(UserDao.class.getGenericSuperclass().getTypeName());
 		Type type = UserDao.class.getGenericSuperclass();
 		Type[] types = ((ParameterizedType)type).getActualTypeArguments();
 		System.out.println(Arrays.toString(types));
