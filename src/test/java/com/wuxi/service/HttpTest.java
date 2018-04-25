@@ -2,6 +2,8 @@ package com.wuxi.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.httpclient.HttpClient;
@@ -15,6 +17,23 @@ import org.junit.Test;
 import com.wuxi.util.CommonsUtil;
 
 public class HttpTest {
+	
+	@Test
+	public void send() {
+		String url = "http://www.baidu.com";
+		int qps = 3000;
+		Executor executor = Executors.newFixedThreadPool(qps);
+		for(int i=0;i<qps;i++) {
+			executor.execute(new Runnable() {
+				@Override
+				public void run() {
+					long start = System.currentTimeMillis();
+					//request(url);
+					System.out.println((System.currentTimeMillis() - start)/1000);
+				}
+			});
+		}
+	}
 
 
 	/**
