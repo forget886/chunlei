@@ -14,9 +14,15 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.params.HttpClientParams;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.params.ClientPNames;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.PoolingClientConnectionManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.CoreConnectionPNames;
+import org.apache.http.params.HttpParams;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +33,13 @@ public class HttpRequestImplTest implements HttpRequest{
 
 	private static final Logger LOG = LoggerFactory.getLogger(HttpRequestImplTest.class);
 	
+	
 	@Test
 	public void sendTest() {
 		String url = "http://www.baidu.com";
 		int qps = 3000;
 		int time = 1;
-		String path = "/Users/qingtong/Desktop/request.txt";
+		String path = "/Users/zhanghui/Desktop/request.txt";
 		send(qps, url, time, path);
 	}
 	
@@ -45,6 +52,16 @@ public class HttpRequestImplTest implements HttpRequest{
 		}
 		final String logFormat = "%s 耗时：%d ms";
 		
+		HttpParams params = new BasicHttpParams();
+		params.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
+		params.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
+		params.setBooleanParameter(CoreConnectionPNames.STALE_CONNECTION_CHECK, true);
+		params.setLongParameter(ClientPNames.CONN_MANAGER_TIMEOUT, 1000);
+		PoolingClientConnectionManager connectionManager = new PoolingClientConnectionManager();
+		connectionManager.setMaxTotal(2000);
+		connectionManager.setDefaultMaxPerRoute(2000);
+		HttpClient client = new DefaultHttpClient(connectionManager, params);
+		
 		CompletionService<String> completionService = new ExecutorCompletionService<>(Executors.newFixedThreadPool(2000));
 		for(int i = 0; i<qps; i++){
 			completionService.submit(new Callable<String>() {
@@ -52,7 +69,7 @@ public class HttpRequestImplTest implements HttpRequest{
 				public String call() throws Exception {
 					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
 					long start = System.currentTimeMillis();
-					request(url);
+					request(url,client);
 					return String.format(logFormat, format.format(new Date()),(System.currentTimeMillis() - start));
 				}
 			});
@@ -61,22 +78,22 @@ public class HttpRequestImplTest implements HttpRequest{
 		File file = new File(path);
         BufferedWriter writer = null;
         long deadline = System.currentTimeMillis() + 1000*time;
-        long singleDeadline = time*1000*1000/qps;
-        System.out.println(singleDeadline);
+        //long singleDeadline = time*1000*1000/qps;
+        //System.out.println(singleDeadline);
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
 			for(int i=0; i<qps; i++){
 				if(System.currentTimeMillis() > deadline) {
-					System.out.println("借宿:"+i);
+					System.out.println("结束:"+i);
 					break;
 				}
 				try {
-					Future<String> future = completionService.poll(singleDeadline, TimeUnit.MICROSECONDS);
+					Future<String> future = completionService.poll(300, TimeUnit.MICROSECONDS);
 					if(future != null){
 				        try {
 			                writer.write(future.get());
 			                writer.newLine();
-			                System.out.println(i);
+			                //System.out.println(i);
 				        } catch (FileNotFoundException e) {
 				            LOG.error("",e);
 				        } catch (IOException e) {
@@ -86,7 +103,7 @@ public class HttpRequestImplTest implements HttpRequest{
 						try {
 			                writer.write(String.format(logFormat, format.format(new Date()),1));
 			                writer.newLine();
-			                System.out.println(i);
+			                //System.out.println(i);
 				        } catch (FileNotFoundException e) {
 				            LOG.error("",e);
 				        } catch (IOException e) {
@@ -117,20 +134,15 @@ public class HttpRequestImplTest implements HttpRequest{
 		}
 	}
 	
-	private void request(final String url) {
-		HttpClientParams params = new HttpClientParams();
-        params.setConnectionManagerTimeout(1);
-        params.setSoTimeout(1);
-	    HttpClient client = new HttpClient(params);
-		GetMethod getMethod = new GetMethod(url);
+	private void request(final String url,HttpClient client) {
+		HttpGet request = new HttpGet(url);
 		try {
-			int  code = client.executeMethod(getMethod);
-			String response = getMethod.getResponseBodyAsString();
+			HttpResponse  response = client.execute(request);
 		} catch (Exception e) {
-			//LOG.error("",e);
+			LOG.error("",e);
 		} finally {
-            if (getMethod != null)
-            	getMethod.releaseConnection();
+            if (request != null)
+            	request.releaseConnection();
         }
 	}
 	
