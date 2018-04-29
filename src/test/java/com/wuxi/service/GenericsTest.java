@@ -17,7 +17,7 @@ public class GenericsTest {
 	}
 	
 	//泛型方法：在方法返回类型之前加类型参数申明部分<>
-	public static <T> void append(List<T> list,Class<T> clazz){
+	public static <T> void append(List<T> list,Class<T> clazz,T a){
 		try {
 			T t = clazz.newInstance();
 			list.add(t);

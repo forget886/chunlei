@@ -12,7 +12,6 @@ import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -53,12 +52,13 @@ public class HttpRequestImplTest implements HttpRequest{
 		final String logFormat = "%s 耗时：%d ms";
 		
 		HttpParams params = new BasicHttpParams();
-		params.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 1000);
-		params.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 1000);
+		params.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 300);
+		params.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 200);
 		params.setBooleanParameter(CoreConnectionPNames.STALE_CONNECTION_CHECK, true);
-		params.setLongParameter(ClientPNames.CONN_MANAGER_TIMEOUT, 1000);
+		params.setLongParameter(ClientPNames.CONN_MANAGER_TIMEOUT, 600);
 		PoolingClientConnectionManager connectionManager = new PoolingClientConnectionManager();
 		connectionManager.setMaxTotal(2000);
+		//同一个请求地址并发数
 		connectionManager.setDefaultMaxPerRoute(2000);
 		HttpClient client = new DefaultHttpClient(connectionManager, params);
 		
@@ -78,8 +78,6 @@ public class HttpRequestImplTest implements HttpRequest{
 		File file = new File(path);
         BufferedWriter writer = null;
         long deadline = System.currentTimeMillis() + 1000*time;
-        //long singleDeadline = time*1000*1000/qps;
-        //System.out.println(singleDeadline);
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
 			for(int i=0; i<qps; i++){
@@ -88,20 +86,10 @@ public class HttpRequestImplTest implements HttpRequest{
 					break;
 				}
 				try {
-					Future<String> future = completionService.poll(300, TimeUnit.MICROSECONDS);
+					Future<String> future = completionService.take();
 					if(future != null){
 				        try {
 			                writer.write(future.get());
-			                writer.newLine();
-			                //System.out.println(i);
-				        } catch (FileNotFoundException e) {
-				            LOG.error("",e);
-				        } catch (IOException e) {
-				            LOG.error("",e);
-				        }
-					}else{
-						try {
-			                writer.write(String.format(logFormat, format.format(new Date()),1));
 			                writer.newLine();
 			                //System.out.println(i);
 				        } catch (FileNotFoundException e) {
