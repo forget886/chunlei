@@ -65,22 +65,7 @@ public class ClassLoadTest {
 		}
 	}
 	
-	@Test
-	public void bootload() {
-		URL[]  urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();
-		for(URL u:urls){
-			System.out.println(u.getPath());
-		}
-		System.out.println("=================================");
-		for(String s : System.getProperty("java.ext.dirs").split(":")){
-			System.out.println(s);
-		}
-		System.out.println("=================================");
-		for(String s : System.getProperty("java.class.path").split(":")){
-			System.out.println(s);
-		}
-		
-	}
+
 	
 	@Test
 	public void move(){
@@ -98,7 +83,24 @@ public class ClassLoadTest {
 		System.out.println("parent loader: " + loader.getParent() + "  "+(loader.getParent() instanceof ClassLoader));
 		System.out.println("grandparent loader: " + loader.getParent().getParent()+ "  "+(loader.getParent().getParent() instanceof ClassLoader));
 	}
-	
+
+    @Test
+    public void bootload() {
+        URL[]  urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();
+        for(URL u:urls){
+            System.out.println(u.getPath());
+        }
+        System.out.println("=================================");
+        for(String s : System.getProperty("java.ext.dirs").split(":")){
+            System.out.println(s);
+        }
+        System.out.println("=================================");
+        for(String s : System.getProperty("java.class.path").split(":")){
+            System.out.println(s);
+        }
+
+    }
+
 	@Test
 	public void contextClassLoader(){
 //		//获取extclassloader

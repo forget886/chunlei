@@ -27,3 +27,4 @@ logs/sql/info.log
 /target/*
 .idea/*
 *.iml
+/target/
