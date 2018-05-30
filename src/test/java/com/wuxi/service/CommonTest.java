@@ -16,7 +16,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
-import org.apache.ibatis.javassist.compiler.ast.NewExpr;
 import org.junit.Test;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
