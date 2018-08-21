@@ -1,5 +1,7 @@
 package com.wuxi.aop.annotation;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

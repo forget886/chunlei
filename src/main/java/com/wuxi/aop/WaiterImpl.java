@@ -1,5 +1,7 @@
 package com.wuxi.aop;
 
+import com.wuxi.aop.annotation.Monitorable;
+
 public class WaiterImpl implements Waiter{
 
 	public WaiterImpl() {
@@ -18,5 +20,6 @@ public class WaiterImpl implements Waiter{
 	public void serveTo(String name) {
 		System.out.println("serve to " + name);
 	}
-	
+
+
 }
