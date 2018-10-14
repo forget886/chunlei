@@ -155,6 +155,11 @@
 		    <artifactId>httpclient</artifactId>
 		    <version>4.5.3</version>
 		</dependency>
+          <dependency>
+              <groupId>com.dangdang</groupId>
+              <artifactId>sharding-jdbc-core</artifactId>
+              <version>1.5.4</version>
+          </dependency>
 		<!-- redis-->
 		<!-- <dependency>
 		    <groupId>org.springframework.data</groupId>
