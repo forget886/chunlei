@@ -35,14 +35,15 @@ public class TreeNodeTest {
     }
 
     private TreeNode solve(TreeNode root) {
-       if(root == null)
-                return root;
+        if(root == null)
+           return root;
         // 递归先把左右节点镜像化
-       TreeNode left = solve(root.left);
-       TreeNode right = solve(root.right);
+        TreeNode left = solve(root.left);
+        TreeNode right = solve(root.right);
         // 对左右子树进行交换。
         root.left = right;
         root.right = left;
+
         return root;
     }
 
