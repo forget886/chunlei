@@ -11,53 +11,53 @@ import com.wuxi.aop.aspect.HelloWorld;
 import com.wuxi.event.MailSend;
 
 
-public class OperateService implements BeanNameAware{
-	
-	private static final Logger logger = LoggerFactory.getLogger(OperateService.class);
-	
-	private   UserService userService;
-	@Autowired
-	private MailSend mailSend;
-	
-	private String beanName;
-	
-	
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
-	public OperateService(String name){
-		System.out.println(name);
-	}
-	
-	public static void main(String[] args) {
-		
-		//AbstractApplicationContext father = new ClassPathXmlApplicationContext("applicationContext.xml");
-		//父子容器 子容器要刷新才能获取bean
-		AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		context.refresh();
-		//是否允许循环依赖
-		//((ClassPathXmlApplicationContext)context).setAllowCircularReferences(false);
+public class OperateService implements BeanNameAware {
+
+    private static final Logger logger = LoggerFactory.getLogger(OperateService.class);
+
+    private UserService userService;
+    @Autowired
+    private MailSend mailSend;
+
+    private String beanName;
+
+
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    public OperateService(String name) {
+        System.out.println(name);
+    }
+
+    public static void main(String[] args) {
+
+        //AbstractApplicationContext father = new ClassPathXmlApplicationContext("applicationContext.xml");
+        //父子容器 子容器要刷新才能获取bean
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        context.refresh();
+        //是否允许循环依赖
+        //((ClassPathXmlApplicationContext)context).setAllowCircularReferences(false);
 //		Waiter waiter = (Waiter) context.getBean("waiterProxy");
 //		waiter.greetTo("xixi");
-		HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
+        HelloWorld helloWorld = (HelloWorld) context.getBean("hello");
 //		helloWorld.hello();
 //		helloWorld.bye("xiao ma",1);
-		helloWorld.sell();
-		
+        helloWorld.sell();
+
 //		Factory factory = (Factory) context.getBean("factory");
 //		logger.info(factory.getArea().getLocation());
-		//UserService userService = (UserService) context.getBean("userService");
+        //UserService userService = (UserService) context.getBean("userService");
 //		User user = new User("李强",2);
 //		user.setId(2);
 //		userService.updateUser(user);
-		//System.out.println(userService.getUser("李强"));
-		//获取spring xml配置bean的装配信息
+        //System.out.println(userService.getUser("李强"));
+        //获取spring xml配置bean的装配信息
 //		BeanDefinition operation = father.getBeanFactory().getBeanDefinition("car2");
 //		for(PropertyValue pv:operation.getPropertyValues().getPropertyValues()){
 //			System.out.println("属性对：" + pv.getName()  + " : " + pv.getValue());
 //		}
-		//扫描包下的类
+        //扫描包下的类
 //		try {
 //			Resource[] resources = context.getResources("classpath*:com/wuxi/dao/**/*.class");
 //			for(Resource r: resources){
@@ -82,8 +82,8 @@ public class OperateService implements BeanNameAware{
 //		for(String name : factory.getBeanDefinitionNames()){
 //			logger.info(name);
 //		}
-		//context只有getResources支持Ant风格的路径
-		//logger.info(context.getResource("classpath:logba*.xml").exists()+"");
+        //context只有getResources支持Ant风格的路径
+        //logger.info(context.getResource("classpath:logba*.xml").exists()+"");
 //		Resource[] resources = null;
 //		try {
 //			resources = context.getResources("classpath:logba*.xml");
@@ -94,25 +94,25 @@ public class OperateService implements BeanNameAware{
 //		}
 //		Car car = context.getBean(Car.class);
 //		System.out.println(car);
-		context.destroy();
-		//father.destroy();
-	}
-	
-	public MailSend getMailSend(){
-		return this.mailSend;
-	}
+        context.destroy();
+        //father.destroy();
+    }
 
-	public UserService getUserService() {
-		return userService;
-	}
+    public MailSend getMailSend() {
+        return this.mailSend;
+    }
 
-	@Override
-	public void setBeanName(String name) {
-		beanName = name;
-	}
-	
-	public String getBeanName(){
-		return beanName;
-	}
+    public UserService getUserService() {
+        return userService;
+    }
+
+    @Override
+    public void setBeanName(String name) {
+        beanName = name;
+    }
+
+    public String getBeanName() {
+        return beanName;
+    }
 
 }

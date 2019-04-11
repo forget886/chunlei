@@ -6,11 +6,11 @@ import org.junit.Test;
 
 public class StringTokenizerTest {
 
-	@Test
-	public void split(){
-		StringTokenizer tokenizer = new StringTokenizer("this;is,a;o", ",;");
-		while(tokenizer.hasMoreElements()){
-			System.out.println(tokenizer.nextToken());
-		}
-	}
+    @Test
+    public void split() {
+        StringTokenizer tokenizer = new StringTokenizer("this;is,a;o", ",;");
+        while (tokenizer.hasMoreElements()) {
+            System.out.println(tokenizer.nextToken());
+        }
+    }
 }

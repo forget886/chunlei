@@ -11,38 +11,38 @@ import org.junit.Test;
 
 public class IOtest {
 
-	@Test
-	public void read(){
-		File file = new File("/Users/qingtong/Desktop/sync.txt");
-		try {
-			FileReader reader = new FileReader(file);
-			StringBuilder tmp = new StringBuilder();
-			char[] tmps = new char[1024];
-			int len = -1;
-			while((len = reader.read(tmps)) != -1){
-				System.out.println(len);
-				tmp.append(new String(tmps,0,len));
-			}
-			
-			System.out.println(tmp.toString());
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	
-	}
-	
-	
-	@Test
-    public void write(){
+    @Test
+    public void read() {
+        File file = new File("/Users/qingtong/Desktop/sync.txt");
+        try {
+            FileReader reader = new FileReader(file);
+            StringBuilder tmp = new StringBuilder();
+            char[] tmps = new char[1024];
+            int len = -1;
+            while ((len = reader.read(tmps)) != -1) {
+                System.out.println(len);
+                tmp.append(new String(tmps, 0, len));
+            }
+
+            System.out.println(tmp.toString());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @Test
+    public void write() {
         File file = new File("/Users/qingtong/Desktop/syncc.txt");
 
         BufferedWriter writer = null;
         try {
             writer = new BufferedWriter(new FileWriter(file));
-            for(int i=0;i<10;i++){
+            for (int i = 0; i < 10; i++) {
                 writer.write("中");
                 writer.newLine();
             }
@@ -55,7 +55,7 @@ public class IOtest {
             e.printStackTrace();
         }
     }
-	
+
 //	@Test
 //	public void asyncIO(){
 //		Path file = Paths.get("/Users/dasouche/Desktop/sync_58.txt");
@@ -76,5 +76,5 @@ public class IOtest {
 //			e.printStackTrace();
 //		}
 //	}
-	
+
 }

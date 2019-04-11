@@ -12,8 +12,8 @@ import com.wuxi.bean.vo.Car;
 
 /**
  * 用javaConfig的方式申明一个bean
- * @author dasouche
  *
+ * @author dasouche
  */
 @Configuration
 //@Import()  //合并多个配置类
@@ -21,14 +21,14 @@ import com.wuxi.bean.vo.Car;
 public class BeansFactory {
 
     public static final Logger logger = LoggerFactory.getLogger(BeansFactory.class);
-    
-	@Bean("car")
-	@Scope("prototype")
-	public Car getCar(){
-		logger.info("使用java config方式创建car实例");
-		Car car = new Car();
-		car.setBrand("奔驰");
-		car.setMaxSpeed(100);
-		return car;
-	}
+
+    @Bean("car")
+    @Scope("prototype")
+    public Car getCar() {
+        logger.info("使用java config方式创建car实例");
+        Car car = new Car();
+        car.setBrand("奔驰");
+        car.setMaxSpeed(100);
+        return car;
+    }
 }

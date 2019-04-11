@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user">
 
-	<select id="getUser" resultType="User" parameterType="HashMap">
-		select id,name,age,school,borth_time as borthTime,work_day as workDay,date_create as dateCreate
-		from User
-		where name = #{name}
-	</select>
+    <select id="getUser" resultType="User" parameterType="HashMap">
+        select id,name,age,school,borth_time as borthTime,work_day as workDay,date_create as dateCreate
+        from User
+        where name = #{name}
+    </select>
 </mapper>

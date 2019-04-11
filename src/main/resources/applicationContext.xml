@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xmlns:context="http://www.springframework.org/schema/context"
-		xmlns:aop="http://www.springframework.org/schema/aop"
-		xmlns:p="http://www.springframework.org/schema/p"
-		xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         					http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
         					http://www.springframework.org/schema/aop
         					http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
         					http://www.springframework.org/schema/context 
         					http://www.springframework.org/schema/context/spring-context-4.2.xsd"
-        default-autowire="byType" >
+       default-autowire="byType">
 
-	<context:component-scan base-package="com.wuxi.service,com.wuxi.dao,com.wuxi.event,com.wuxi.aop" >
-		<!-- <context:include-filter type="annotation" expression=""/>
-		<context:exclude-filter type="annotation" expression=""/> -->
-	</context:component-scan>
-	
-	<!-- 为匹配切面的bean创建代理 -->
-	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
-	
-	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
-		<property name="locations">
-			<list>
-			<!-- ResourceEditor的setAsText方法可以把字面值转换为Resource对象 -->
-				<value>classpath*:*.properties</value>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="car2" class="com.wuxi.service.CarFactoryBean">
-		<property name="brand" value="奥迪"/>
-	</bean>
-	
-	<bean id="greetingAdvice" class="com.wuxi.aop.GreetingBeforeAdvice"/>
-	<bean id="waiter" class="com.wuxi.aop.WaiterImpl"/>
-	<bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<property name="interfaces">
-			<list>
-				<value>com.wuxi.aop.Waiter</value>
-			</list>
-		</property>
-		<!-- 必须是实现了org.aopalliance.intercept.MethodInterceptor/org.springframework.aop.Advisor/org.aopalliance.aop.Advice-->
-		<property name="interceptorNames" >
-			<list>
-				<value>greetingAdvice</value>
-				<value>greetingInterceptor</value>
-				<value>greetingThrows</value>
-			</list>
-		</property>
-		<property name="target" ref="waiter"/>
-	</bean>
-	
-	<bean id="hello" class="com.wuxi.aop.aspect.HelloWorldImpl"></bean>
-	<bean id="timeHandler" class="com.wuxi.aop.aspect.TimeHandler"></bean>
-	
-	<!-- 高版本的Spring会自动选择是使用动态代理还是CGLIB生成代理内容，当然我们也可以强制使用CGLIB生成代理 -->
-	<!-- proxy-target-class属性，true，基于类的代理,false或者这个属性被省略，基于接口的代理-->
-	<!-- <aop:config proxy-target-class="false">
-		
-		<aop:pointcut id="addtime" expression="execution(* com.wuxi.aop.aspect.HelloWorld.h*(..))"/>
-		<aop:aspect id="time" ref="timeHandler" order="1"> 
-			<aop:before method="printH" pointcut-ref="addtime" />
-			<aop:after method="printH" pointcut-ref="addtime"/>
-		</aop:aspect>
-	</aop:config> -->
-	
-	<!-- <aop:config>
-		注意aop:advisor的切点函数不能绑定参数，参数只能通过增强接口方法的入参获取
-		<aop:advisor advice-ref="greetingAdvice" pointcut="execution(* com.wuxi.aop.aspect.HelloWorld.b*(..))"/>
-	</aop:config> -->
-	
-	<bean id="operate" name="operatea" class="com.wuxi.service.OperateService" >
-	    <!-- depends-on="bean" 前置依赖bean,前置依赖的bean会在本bean实例化之前创建好 -->
- 		<!-- <constructor-arg index="" value=""/>
-		<constructor-arg name="" value=""/>
-		<constructor-arg name="" ref=""/> -->
-		<constructor-arg name="name" value="正则" />
-		<!-- 讲一个方法申明成返回某个bean,但实际返回的bean是用lookup-method指定的,以此达到解耦的目的-->
-		<!-- <lookup-method name="" bean=""/> -->
-		<!-- 不仅可以替换方法返回类型，还能替换原来方法的逻辑(replacer引用的bean继承org.springframework.beans.factory.support.MethodReplacer接口)-->
-		<!-- <replaced-method name="" replacer=""/> -->
-		<property name="userService" ref="userService"/>
-		<!-- <property name="car.name"  value="宝马"/> 级联属性，前提要先new Car()-->
-		<!-- <property name="">
-			<list >
-				<value></value>
-				<value></value>
-				<ref bean=""/>
-			</list>
-		</property> -->
-		<!-- <property name="">
-			<set merge="">
-				<ref parent="" bean=""/>
-			</set>
-		</property> -->
-		<!-- <property name="">
-			<map >
-				<entry key="" value-ref="" ></entry>
-			</map>
-		</property>
-		<property name="">
-			<props>
-				<prop key="name">zh</prop>
-			</props>
-		</property> -->
-	</bean>
-	
-	<alias name="operate" alias="operateb"/>
-	
-	<!-- <beans>
-		<bean></bean>
-	</beans> -->
-	
-	<bean class="com.wuxi.service.animal.Pig" autowire-candidate="false" init-method="init"/>
-	<bean class="com.wuxi.service.animal.Tiger" primary="true" scope="prototype">
-		<aop:scoped-proxy/>
-	</bean>
-	
-	<!-- 注册自定义属性编辑器 -->
-	<bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
-		<property name="propertyEditorRegistrars">
-			<list>
-				<bean class="com.wuxi.property.CustomPropertyEditorRegistrar"></bean>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="factory" class="com.wuxi.property.Factory">
-		<property name="name" value="zh"/>
-		<!-- 通过属性编辑器将字面值转换为属性类型对象 -->
-		<property name="area" value="left,20"></property>
-	</bean>
-	
-	<!-- 后处理器一般是全局bean处理，也可按照beanName特殊处理个别bean -->
-	<bean id="timeRecoder" class="com.wuxi.service.TimeRecoder"></bean>
-	
-	<!-- spring的bean定义可以继承.一个子的bean定义可以从一个父bean定义中继承得到所有的属性,并且子bean的定义可以覆盖其通过继承得来的父bean定义的属性. -->
-	<!-- <bean  id="" class="" parent="" init-method="" destroy-method="" abstract="true"/> -->
-	
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
-		p:dataSource-ref="dataSource"/>
-	
-	<import resource="application-datasource.xml"/>
+    <context:component-scan base-package="com.wuxi.service,com.wuxi.dao,com.wuxi.event,com.wuxi.aop">
+        <!-- <context:include-filter type="annotation" expression=""/>
+        <context:exclude-filter type="annotation" expression=""/> -->
+    </context:component-scan>
+
+    <!-- 为匹配切面的bean创建代理 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <!-- ResourceEditor的setAsText方法可以把字面值转换为Resource对象 -->
+                <value>classpath*:*.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="car2" class="com.wuxi.service.CarFactoryBean">
+        <property name="brand" value="奥迪"/>
+    </bean>
+
+    <bean id="greetingAdvice" class="com.wuxi.aop.GreetingBeforeAdvice"/>
+    <bean id="waiter" class="com.wuxi.aop.WaiterImpl"/>
+    <bean id="waiterProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interfaces">
+            <list>
+                <value>com.wuxi.aop.Waiter</value>
+            </list>
+        </property>
+        <!-- 必须是实现了org.aopalliance.intercept.MethodInterceptor/org.springframework.aop.Advisor/org.aopalliance.aop.Advice-->
+        <property name="interceptorNames">
+            <list>
+                <value>greetingAdvice</value>
+                <value>greetingInterceptor</value>
+                <value>greetingThrows</value>
+            </list>
+        </property>
+        <property name="target" ref="waiter"/>
+    </bean>
+
+    <bean id="hello" class="com.wuxi.aop.aspect.HelloWorldImpl"></bean>
+    <bean id="timeHandler" class="com.wuxi.aop.aspect.TimeHandler"></bean>
+
+    <!-- 高版本的Spring会自动选择是使用动态代理还是CGLIB生成代理内容，当然我们也可以强制使用CGLIB生成代理 -->
+    <!-- proxy-target-class属性，true，基于类的代理,false或者这个属性被省略，基于接口的代理-->
+    <!-- <aop:config proxy-target-class="false">
+
+        <aop:pointcut id="addtime" expression="execution(* com.wuxi.aop.aspect.HelloWorld.h*(..))"/>
+        <aop:aspect id="time" ref="timeHandler" order="1">
+            <aop:before method="printH" pointcut-ref="addtime" />
+            <aop:after method="printH" pointcut-ref="addtime"/>
+        </aop:aspect>
+    </aop:config> -->
+
+    <!-- <aop:config>
+        注意aop:advisor的切点函数不能绑定参数，参数只能通过增强接口方法的入参获取
+        <aop:advisor advice-ref="greetingAdvice" pointcut="execution(* com.wuxi.aop.aspect.HelloWorld.b*(..))"/>
+    </aop:config> -->
+
+    <bean id="operate" name="operatea" class="com.wuxi.service.OperateService">
+        <!-- depends-on="bean" 前置依赖bean,前置依赖的bean会在本bean实例化之前创建好 -->
+        <!-- <constructor-arg index="" value=""/>
+       <constructor-arg name="" value=""/>
+       <constructor-arg name="" ref=""/> -->
+        <constructor-arg name="name" value="正则"/>
+        <!-- 讲一个方法申明成返回某个bean,但实际返回的bean是用lookup-method指定的,以此达到解耦的目的-->
+        <!-- <lookup-method name="" bean=""/> -->
+        <!-- 不仅可以替换方法返回类型，还能替换原来方法的逻辑(replacer引用的bean继承org.springframework.beans.factory.support.MethodReplacer接口)-->
+        <!-- <replaced-method name="" replacer=""/> -->
+        <property name="userService" ref="userService"/>
+        <!-- <property name="car.name"  value="宝马"/> 级联属性，前提要先new Car()-->
+        <!-- <property name="">
+            <list >
+                <value></value>
+                <value></value>
+                <ref bean=""/>
+            </list>
+        </property> -->
+        <!-- <property name="">
+            <set merge="">
+                <ref parent="" bean=""/>
+            </set>
+        </property> -->
+        <!-- <property name="">
+            <map >
+                <entry key="" value-ref="" ></entry>
+            </map>
+        </property>
+        <property name="">
+            <props>
+                <prop key="name">zh</prop>
+            </props>
+        </property> -->
+    </bean>
+
+    <alias name="operate" alias="operateb"/>
+
+    <!-- <beans>
+        <bean></bean>
+    </beans> -->
+
+    <bean class="com.wuxi.service.animal.Pig" autowire-candidate="false" init-method="init"/>
+    <bean class="com.wuxi.service.animal.Tiger" primary="true" scope="prototype">
+        <aop:scoped-proxy/>
+    </bean>
+
+    <!-- 注册自定义属性编辑器 -->
+    <bean id="customEditorConfigurer" class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="propertyEditorRegistrars">
+            <list>
+                <bean class="com.wuxi.property.CustomPropertyEditorRegistrar"></bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="factory" class="com.wuxi.property.Factory">
+        <property name="name" value="zh"/>
+        <!-- 通过属性编辑器将字面值转换为属性类型对象 -->
+        <property name="area" value="left,20"></property>
+    </bean>
+
+    <!-- 后处理器一般是全局bean处理，也可按照beanName特殊处理个别bean -->
+    <bean id="timeRecoder" class="com.wuxi.service.TimeRecoder"></bean>
+
+    <!-- spring的bean定义可以继承.一个子的bean定义可以从一个父bean定义中继承得到所有的属性,并且子bean的定义可以覆盖其通过继承得来的父bean定义的属性. -->
+    <!-- <bean  id="" class="" parent="" init-method="" destroy-method="" abstract="true"/> -->
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="dataSource"/>
+
+    <import resource="application-datasource.xml"/>
 </beans>

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CircularReferA {
 
-	@Autowired
-	CircularReferB circularReferB;
+    @Autowired
+    CircularReferB circularReferB;
 }

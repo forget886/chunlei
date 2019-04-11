@@ -9,18 +9,18 @@ import org.junit.Test;
 
 public class PropertyTest {
 
-	@Test
-	public void load(){
-		Properties properties = new Properties();
-		InputStream inStream = PropertyTest.class.getClassLoader().getResourceAsStream("spring.handlers");
-		try {
-			properties.load(inStream);
-			for(Entry<Object, Object> entry:properties.entrySet()){
-				System.out.println(entry.getKey());
-				System.out.println(entry.getValue());
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    @Test
+    public void load() {
+        Properties properties = new Properties();
+        InputStream inStream = PropertyTest.class.getClassLoader().getResourceAsStream("spring.handlers");
+        try {
+            properties.load(inStream);
+            for (Entry<Object, Object> entry : properties.entrySet()) {
+                System.out.println(entry.getKey());
+                System.out.println(entry.getValue());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

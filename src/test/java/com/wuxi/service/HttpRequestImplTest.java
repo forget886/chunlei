@@ -28,25 +28,24 @@ import java.util.concurrent.*;
 
 public class HttpRequestImplTest {
 
-	private static final Logger LOG = LoggerFactory.getLogger(HttpRequestImplTest.class);
-	
-	
-	@Test
-	public void sendTest() {
-		String url = "http://www.baidu.com";
-		int qps = 3000;
-		int time = 1;
-		String path = "/Users/qingtong/Desktop/request.txt";
-		send(qps, url, time, path);
-	}
-	
-	
+    private static final Logger LOG = LoggerFactory.getLogger(HttpRequestImplTest.class);
 
-	public void send(int qps, final String url, int time, String path) {
-		if (qps <= 0 || StringUtil.isEmpty(url) || time <= 0 || StringUtil.isEmpty(path)) {
-			return;
-		}
-		final String logFormat = "%s 耗时：%d ms";
+
+    @Test
+    public void sendTest() {
+        String url = "http://www.baidu.com";
+        int qps = 3000;
+        int time = 1;
+        String path = "/Users/qingtong/Desktop/request.txt";
+        send(qps, url, time, path);
+    }
+
+
+    public void send(int qps, final String url, int time, String path) {
+        if (qps <= 0 || StringUtil.isEmpty(url) || time <= 0 || StringUtil.isEmpty(path)) {
+            return;
+        }
+        final String logFormat = "%s 耗时：%d ms";
 
         //创建HTTP的连接池管理对象
         final PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
@@ -55,95 +54,95 @@ public class HttpRequestImplTest {
         //将http://www.baidu.com:80的最大连接增加到50
         //HttpHost httpHost = new HttpHost("http://www.baidu.com",80);
         //connectionManager.setMaxPerRoute(new HttpRoute(httpHost),50);
-		//同一个请求地址并发数
-		connectionManager.setDefaultMaxPerRoute(2000);
+        //同一个请求地址并发数
+        connectionManager.setDefaultMaxPerRoute(2000);
 
         //HttpClient对象
         final CloseableHttpClient httpClient = HttpClients.custom()
                 .setConnectionManager(connectionManager)
                 .setRetryHandler(retryHandler(0)).build();
 
-		CompletionService<String> completionService = new ExecutorCompletionService<String>(Executors.newFixedThreadPool(2000));
-		for(int i = 0; i<qps; i++){
-			completionService.submit(new Callable<String>() {
-				@Override
-				public String call() throws Exception {
-					SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
-					long start = System.currentTimeMillis();
-					doGet(url,httpClient);
-					return String.format(logFormat, format.format(new Date()),(System.currentTimeMillis() - start));
-				}
-			});
-		}
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
-		File file = new File(path);
+        CompletionService<String> completionService = new ExecutorCompletionService<String>(Executors.newFixedThreadPool(2000));
+        for (int i = 0; i < qps; i++) {
+            completionService.submit(new Callable<String>() {
+                @Override
+                public String call() throws Exception {
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
+                    long start = System.currentTimeMillis();
+                    doGet(url, httpClient);
+                    return String.format(logFormat, format.format(new Date()), (System.currentTimeMillis() - start));
+                }
+            });
+        }
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss SSS");
+        File file = new File(path);
         BufferedWriter writer = null;
-        long deadline = System.currentTimeMillis() + 1000*time;
-		try {
-			writer = new BufferedWriter(new FileWriter(file));
-			for(int i=0; i<qps; i++){
-				if(System.currentTimeMillis() > deadline) {
-					System.out.println("结束:"+i);
-					break;
-				}
-				try {
-					Future<String> future = completionService.take();
-					if(future != null){
-				        try {
-			                writer.write(future.get());
-			                writer.newLine();
-			                //System.out.println(i);
-				        } catch (FileNotFoundException e) {
-				            LOG.error("",e);
-				        } catch (IOException e) {
-				            LOG.error("",e);
-				        }
-					}
-				} catch (Exception e) {
-					LOG.error("",e);
-				} 
-			}
-			
-		} catch (IOException e1) {
-			LOG.error("",e1);
-		}finally {
-			if(writer != null) {
-				try {
-					writer.flush();
-				} catch (IOException e1) {
-					LOG.error("",e1);
-				}
-				try {
-					writer.close();
-				} catch (IOException e) {
-					LOG.error("",e);
-				}
-			}
-			
-		}
-	}
-	
-	private void doGet(final String url,CloseableHttpClient httpClient) {
+        long deadline = System.currentTimeMillis() + 1000 * time;
+        try {
+            writer = new BufferedWriter(new FileWriter(file));
+            for (int i = 0; i < qps; i++) {
+                if (System.currentTimeMillis() > deadline) {
+                    System.out.println("结束:" + i);
+                    break;
+                }
+                try {
+                    Future<String> future = completionService.take();
+                    if (future != null) {
+                        try {
+                            writer.write(future.get());
+                            writer.newLine();
+                            //System.out.println(i);
+                        } catch (FileNotFoundException e) {
+                            LOG.error("", e);
+                        } catch (IOException e) {
+                            LOG.error("", e);
+                        }
+                    }
+                } catch (Exception e) {
+                    LOG.error("", e);
+                }
+            }
+
+        } catch (IOException e1) {
+            LOG.error("", e1);
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.flush();
+                } catch (IOException e1) {
+                    LOG.error("", e1);
+                }
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    LOG.error("", e);
+                }
+            }
+
+        }
+    }
+
+    private void doGet(final String url, CloseableHttpClient httpClient) {
 
 
-		HttpGet request = new HttpGet(url);
+        HttpGet request = new HttpGet(url);
         // 构建请求配置信息
         RequestConfig config = RequestConfig.custom().setConnectTimeout(300) // 创建连接的最长时间
                 .setConnectionRequestTimeout(200) // 从连接池中获取到连接的最长时间
                 .setSocketTimeout(4 * 1000) // 数据传输的最长时间4s
                 .build();
         request.setConfig(config);
-        CloseableHttpResponse  response = null;
-		try {
+        CloseableHttpResponse response = null;
+        try {
             response = httpClient.execute(request);
             // 判断返回状态是否为200
             if (response.getStatusLine().getStatusCode() == 200) {
                 String content = EntityUtils.toString(response.getEntity(), "UTF-8");
                 //System.out.println(content);
             }
-		} catch (Exception e) {
-			LOG.error("",e);
-		} finally {
+        } catch (Exception e) {
+            LOG.error("", e);
+        } finally {
             if (response != null) {
                 try {
                     response.close();
@@ -152,14 +151,15 @@ public class HttpRequestImplTest {
                 }
             }
         }
-	}
+    }
 
     /**
      * 请求重试处理
+     *
      * @param tryTimes
      * @return
      */
-	private static HttpRequestRetryHandler retryHandler(final int tryTimes){
+    private static HttpRequestRetryHandler retryHandler(final int tryTimes) {
         HttpRequestRetryHandler httpRequestRetryHandler = new HttpRequestRetryHandler() {
             @Override
             public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
@@ -203,5 +203,5 @@ public class HttpRequestImplTest {
         return httpRequestRetryHandler;
     }
 
-	
+
 }

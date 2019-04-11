@@ -9,17 +9,17 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 
 public class RecourceTest {
 
-	@Test
-	public void fileTest() throws IOException{
+    @Test
+    public void fileTest() throws IOException {
 //		String filePath = "/Users/dasouche/Desktop/error.txt";
 //		Resource file = new FileSystemResource(filePath);
 //		
 //		System.out.println(file.isReadable());
-		
-		ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-		Resource[] resources = resolver.getResources("classpath*:logbac?.xml");
-		for(Resource r:resources){
-			System.out.println(r.getDescription());
-		}
-	}
+
+        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        Resource[] resources = resolver.getResources("classpath*:logbac?.xml");
+        for (Resource r : resources) {
+            System.out.println(r.getDescription());
+        }
+    }
 }

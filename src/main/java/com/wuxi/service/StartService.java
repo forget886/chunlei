@@ -6,16 +6,16 @@ import com.wuxi.bean.vo.Car;
 
 public class StartService {
 
-	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //		System.out.println(Arrays.toString(context.getAliases("operatea")));
 //		System.out.println(context.getBean("operatea") == null);
-		Car car11 = (Car) context.getBean("car");
-		Car car12 = (Car) context.getBean("car");
-		System.out.println(car11 == car12);
-		Car car21 = (Car) context.getBean("car2");
-		Car car22 = (Car) context.getBean("car2");
-		System.out.println(car21 == car22);
+        Car car11 = (Car) context.getBean("car");
+        Car car12 = (Car) context.getBean("car");
+        System.out.println(car11 == car12);
+        Car car21 = (Car) context.getBean("car2");
+        Car car22 = (Car) context.getBean("car2");
+        System.out.println(car21 == car22);
 //		System.out.println(operateService.getClass().getClassLoader().getResource("."));
 //		System.out.println(operateService.getClass().getResource("."));
 //		System.out.println(context.getBeanDefinitionCount());
@@ -28,5 +28,5 @@ public class StartService {
 //			System.out.println(entry.getKey());
 //			System.out.println(entry.getValue().getBeanName());
 //		}
-	}
+    }
 }
